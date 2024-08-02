@@ -1,4 +1,5 @@
 import { paths } from 'src/routes/paths';
+import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -119,10 +120,35 @@ export const pageLinks = [
 // ];
 
 export const navConfig = [
-  // { title: 'Home', path: '/' },
-  { title: 'How It Works', path: '#' },
+  {
+    title: 'Home',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '/',
+  },
+  {
+    title: 'How It Works',
+    icon: <Iconify icon="solar:home-2-bold-duotone" />,
+    path: '#',
+  },
   { title: 'Our Partners', path: '#' },
-  { title: 'Couriers', path: '#' },
-  // { title: 'eCommerce', path: '#' }, 
-  { title: 'Resources', path: '#' },
+  {
+    title: 'Couriers',
+    path: '#',
+    icon: <Iconify icon="solar:file-bold-duotone" />,
+    children: [
+      { title: 'Canada', path: '#' },
+      { title: 'United States', path: '#' },
+      { title: 'Rest of the World', path: '#' },
+    ],
+  },
+  {
+    title: 'Resources',
+    path: '#',
+    icon: <Iconify icon="solar:file-bold-duotone" />,
+    children: [
+      { title: 'Support', path: '#' },
+      { title: 'Developers', path: '#' },
+      { title: 'Blog', path: '#' },
+    ],
+  },
 ];

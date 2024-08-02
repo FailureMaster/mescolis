@@ -29,6 +29,7 @@ import MarketingServicesBenefits from '../marketing-services-benefits';
 import MarketingLandingProcess from '../marketing-landing-process';
 import MarketingNewsletter from '../marketing-newsletter';
 
+
 // ----------------------------------------------------------------------
 
 export default function CareerLandingView() {
@@ -47,8 +48,6 @@ export default function CareerLandingView() {
             <MarketingServicesBenefits />
 
             <MarketingLandingProcess />
-
-            {/* <CareerLandingConnections countries={_jobsByCountries} /> */}
 
             <CareerLandingForRecruiters />
 

@@ -93,6 +93,14 @@ export default function Header({ headerOnDark }) {
 
                         ]}
                     />
+                    {/* <NavDesktop
+                        slotProps={{
+                            rootItem: {
+                                '& .icon': { display: 'none' },
+                            },
+                        }}
+                        data={navConfig}
+                    /> */}
                 </Stack>
 
                 <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
