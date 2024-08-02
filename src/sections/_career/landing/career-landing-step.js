@@ -44,10 +44,14 @@ export default function CareerLandingStep() {
                 </Typography>
 
                 <Typography variant="h2" sx={{ my: 3 }}>
-                    Whats in Mescolis
+                    How Can
+                    <Box component="span" sx={{ color: 'primary.main' }}>
+                        {` Mescolis `}
+                    </Box>
+                    Help Me?
                 </Typography>
 
-                <Typography sx={{ color: 'text.secondary', maxWidth: 480, mx: 'auto' }}>
+                <Typography sx={{ color: 'text.secondary', maxWidth: 550, mx: 'auto' }}>
                     Mescolis user-friendly tools make it easy to process and manage shipments, leaving you free to take care of your business.
                     Get rates, print labels, ship, track and manage shipments, all in one place.
                 </Typography>

@@ -50,7 +50,7 @@ export default function Header({ headerOnDark }) {
             <>
                 <Stack
                     flexGrow={1}
-                    alignItems="end"
+                    alignItems="center"
                     sx={{
                         // height: 1,
                         display: { xs: 'none', md: 'flex' },
@@ -93,6 +93,14 @@ export default function Header({ headerOnDark }) {
 
                         ]}
                     />
+                    {/* <NavDesktop
+                        slotProps={{
+                            rootItem: {
+                                '& .icon': { display: 'none' },
+                            },
+                        }}
+                        data={navConfig}
+                    /> */}
                 </Stack>
 
                 <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />

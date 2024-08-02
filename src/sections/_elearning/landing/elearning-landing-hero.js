@@ -1,6 +1,9 @@
+import PropTypes from 'prop-types';
+
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import Stack from '@mui/material/Stack';
+import Tab from '@mui/material/Tab';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Unstable_Grid2';
@@ -20,119 +23,125 @@ import ElearningHeroIllustration from 'src/assets/illustrations/elearning-hero-i
 import Iconify from 'src/components/iconify';
 import { PlayerDialog } from 'src/components/player';
 
+import { CustomTabs } from 'src/components/custom-tabs';
+import { useTabs } from 'src/hooks/use-tabs';
+
+import MarketingContactForm from './marketing-contact-form';
+
 // ----------------------------------------------------------------------
 
 const SUMMARY = [
-  { value: 14000, label: 'Learners', color: 'warning' },
-  { value: 1050, label: 'Courses', color: 'error' },
-  { value: 59000, label: 'Graduates', color: 'success' },
+    { value: 14000, label: 'Learners', color: 'warning' },
+    { value: 1050, label: 'Courses', color: 'error' },
+    { value: 59000, label: 'Graduates', color: 'success' },
+];
+
+const TABS = [
+    { value: 'package', label: 'Package' },
+    { value: 'envelope', label: 'Envelope' },
+    { value: 'ltl_freight', label: 'LTL (Freight)' },
 ];
 
 // ----------------------------------------------------------------------
 
 export default function ElearningLandingHero() {
-  const theme = useTheme();
+    const theme = useTheme();
 
-  const mdUp = useResponsive('up', 'md');
+    const mdUp = useResponsive('up', 'md');
 
-  const videoOpen = useBoolean();
+    const videoOpen = useBoolean();
 
-  return (
-    <>
-      <Box
-        sx={{
-          ...bgGradient({
-            color: alpha(theme.palette.background.default, 0.9),
-            imgUrl: '/assets/background/overlay_1.jpg',
-          }),
-          overflow: 'hidden',
-        }}
-      >
-        <Container
-          sx={{
-            py: 15,
-            display: { md: 'flex' },
-            alignItems: { md: 'center' },
-            height: { md: `100vh` },
-          }}
+    const tabs = useTabs('package');
+
+    const renderTabs = (
+        <CustomTabs
+            value={tabs.value}
+            onChange={tabs.onChange}
+            variant="fullWidth"
+            slotProps={{ tab: { px: 0 } }}
+            sx={{
+                fontWeight: 400,
+                borderRadius: 1,
+                marginTop: 4,
+                marginBottom: 1,
+                '& .Mui-selected': {
+                    color: 'white',
+                },
+            }}
         >
-          <Grid container spacing={3}>
-            <Grid xs={12} md={6} lg={5}>
-              <Stack
+            {TABS.map((tab) => (
+                <Tab key={tab.value} value={tab.value} label={tab.label} sx={{ fontWeight: 400 }} />
+            ))}
+        </CustomTabs>
+    );
+
+    const renderFilters = (
+        <Stack
+            spacing={{ xs: 1, md: 0 }}
+            direction={{ xs: 'column', md: 'row' }}
+            sx={{
+                p: { xs: 1, md: 2 },
+                borderRadius: 1,
+                bgcolor: 'common.white',
+                alignItems: { md: 'center' },
+                justifyContent: { md: 'center' },
+                marginTop: 1,
+            }}
+        >
+            <MarketingContactForm />
+        </Stack>
+    );
+
+    return (
+        <>
+            <Box
                 sx={{
-                  textAlign: { xs: 'center', md: 'unset' },
+                    ...bgGradient({
+                        color: alpha(theme.palette.background.default, 0.9),
+                        imgUrl: '/assets/background/overlay_1.jpg',
+                    }),
+                    overflow: 'hidden',
                 }}
-              >
-                <Typography variant="h1">
-                  Free
-                  <Box component="span" sx={{ color: 'text.disabled' }}>
-                    {` Online `}
-                  </Box>
-                  <Box component="span" sx={{ color: 'primary.main', textDecoration: 'underline' }}>
-                    {` Courses `}
-                  </Box>
-                  From The Experts
-                </Typography>
-
-                <Typography sx={{ color: 'text.secondary', mt: 3, mb: 5 }}>
-                  Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis
-                  venenatis ante odio sit amet eros.
-                </Typography>
-
-                <Stack spacing={3} alignItems="center" direction={{ xs: 'column', md: 'row' }}>
-                  <Button color="inherit" size="large" variant="contained">
-                    Ready Start
-                  </Button>
-
-                  <Stack direction="row" alignItems="center" sx={{ typography: 'h6' }}>
-                    <Fab size="medium" color="info" onClick={videoOpen.onTrue} sx={{ mr: 1 }}>
-                      <Iconify width={24} icon="carbon:play" />
-                    </Fab>
-                    Watch Video
-                  </Stack>
-                </Stack>
-
-                <Divider sx={{ borderStyle: 'dashed', mt: 8, mb: 6 }} />
-
-                <Stack
-                  direction="row"
-                  spacing={{ xs: 3, sm: 10 }}
-                  justifyContent={{ xs: 'center', md: 'unset' }}
+            >
+                <Container
+                    sx={{
+                        py: 15,
+                        display: { sm: 'flex', md: 'flex' },
+                        alignItems: { md: 'center', },
+                        height: { md: `100vh` },
+                    }}
                 >
-                  {SUMMARY.map((item) => (
-                    <Stack key={item.value} spacing={0.5} sx={{ position: 'relative' }}>
-                      <Box
-                        sx={{
-                          top: 8,
-                          left: -4,
-                          width: 24,
-                          height: 24,
-                          opacity: 0.24,
-                          borderRadius: '50%',
-                          position: 'absolute',
-                          bgcolor: `${item.color}.main`,
-                        }}
-                      />
-                      <Typography variant="h3">{fShortenNumber(item.value)}+</Typography>
-                      <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        {item.label}
-                      </Typography>
-                    </Stack>
-                  ))}
-                </Stack>
-              </Stack>
-            </Grid>
+                    <Grid container spacing={3}>
+                        <Grid xs={12} md={5} lg={5}>
+                            <Stack
+                                spacing={5}
+                                sx={{
+                                    textAlign: { xs: 'center', md: 'unset' },
+                                }}
+                            >
+                                <Stack sx={{ }}>
+                                    <Typography variant="h1" sx={{ color: 'primary.main' }}>
+                                        Mescolis
+                                    </Typography>
+                                    <Typography variant="h3" >
+                                        World-Wide Shipping Service
+                                    </Typography>
+                                    {renderTabs}
+                                    {renderFilters}
+                                </Stack>
+                            </Stack>
+                        </Grid>
 
-            {mdUp && (
-              <Grid xs={12} md={6} lg={7}>
-                <ElearningHeroIllustration />
-              </Grid>
-            )}
-          </Grid>
-        </Container>
-      </Box>
+                        {mdUp && (
+                            <Grid xs={12} md={7} lg={7}>
+                                <ElearningHeroIllustration />
+                            </Grid>
+                        )}
+                    </Grid>
+                </Container>
+            </Box>
 
-      <PlayerDialog open={videoOpen.value} onClose={videoOpen.onFalse} videoPath={_mock.video(0)} />
-    </>
-  );
+            <PlayerDialog open={videoOpen.value} onClose={videoOpen.onFalse} videoPath={_mock.video(0)} />
+        </>
+    );
 }

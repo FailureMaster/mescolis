@@ -17,19 +17,23 @@ const COLORS = ['primary', 'secondary', 'warning', 'success'];
 
 const SERVICES = [
     {
-        name: 'Warehouse',
+        name: 'Describe Your Shipment',
+        description: 'Our smart address lookup tool makes entering addresses easy. ',
         icon: '/assets/icons/steps/step1.svg',
     },
     {
-        name: 'Unloading',
+        name: 'Compare & Select Rates',
+        description: 'See the rates available from trusted couriers for your specific shipment details.',
         icon: '/assets/icons/steps/step2.svg',
     },
     {
-        name: 'Packing',
+        name: 'Select Pickup or Drop Off',
+        description: 'Easily schedule pickups during processing. Manage your pickups with My Pickups.',
         icon: '/assets/icons/steps/step3.svg',
     },
     {
-        name: 'Delivery',
+        name: 'Print & Attach Your Label',
+        description: 'We generates your label and commercial invoice you need to attach to your shipment.',
         icon: '/assets/icons/steps/step4.svg',
     },
 ];
@@ -44,7 +48,7 @@ export default function MarketingLandingProcess() {
             }}
         >
             <Stack
-                spacing={3}
+                spacing={2}
                 sx={{
                     maxWidth: 480,
                     mb: { xs: 8, md: 5 },
@@ -52,8 +56,15 @@ export default function MarketingLandingProcess() {
                     textAlign: { xs: 'center', md: 'unset' },
                 }}
             >
-                <Typography variant="h2">Working Process</Typography>
-
+                <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+                    Ship Packages and Envelopes in One Minute Flat.
+                </Typography>
+                <Typography variant="h2" sx={{ mb: 3 }}>
+                    Working
+                    <Box component="span" sx={{ color: 'primary.main' }}>
+                        {` Process `}
+                    </Box>
+                </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
                     Thanks to Mescolis simple yet powerful interface, you’ll find you can process shipments in as little as one minute with the most trusted couriers.
                 </Typography>
@@ -82,7 +93,7 @@ export default function MarketingLandingProcess() {
 // ----------------------------------------------------------------------
 
 function ServiceItem({ service, index }) {
-    const { name, icon } = service;
+    const { name, icon, description } = service;
 
     return (
         <Card
@@ -106,14 +117,13 @@ function ServiceItem({ service, index }) {
                 src={icon}
                 sx={{
                     width: 100,
-                    // height: 70,
-                    // opacity: 0.48,
                 }}
             />
 
-            <Typography variant="h5" sx={{ mt: 3, textAlign: 'right' }}>
+            <Typography variant="h5" sx={{ mt: 3, mb: 2, textAlign: 'center' }}>
                 {name}
             </Typography>
+            {description}
         </Card>
     );
 }
@@ -123,5 +133,6 @@ ServiceItem.propTypes = {
     service: PropTypes.shape({
         name: PropTypes.string,
         icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+        description: PropTypes.string,
     }),
 };

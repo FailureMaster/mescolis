@@ -13,14 +13,15 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
   return (
     <Tabs
       sx={{
-        gap: { sm: 0 },
+        gap: 0,
         minHeight: 38,
         flexShrink: 0,
-
         alignItems: 'center',
         bgcolor: 'background.neutral',
+        marginRight: 0,
         [`& .${tabsClasses.scroller}`]: {
           p: 1,
+          marginRight: 0,
           ...slotProps?.scroller,
         },
         [`& .${tabsClasses.flexContainer}`]: {
@@ -52,6 +53,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
           px: 2,
           zIndex: 1,
           minHeight: 'auto',
+          marginRight: 0, // Remove margin here
           ...slotProps?.tab,
           [`&.${tabClasses.selected}`]: {
             ...slotProps?.selected,

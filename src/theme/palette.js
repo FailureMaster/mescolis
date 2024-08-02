@@ -18,12 +18,12 @@ export const grey = {
 };
 
 export const primary = {
-  lighter: '#FFF1CC',
-  light: '#FFC766',
-  main: '#FF8B00',
-  dark: '#B75300',
+  lighter: '#CCF4FE',
+  light: '#68CDF9',
+  main: '#078DEE',
+  dark: '#0351AB',
   darker: '#7A2C00',
-  contrastText: '#FFFFFF',
+  contrastText: '#012972',
 };
 
 export const secondary = {

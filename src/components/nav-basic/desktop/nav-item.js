@@ -123,6 +123,20 @@ const StyledNavItem = styled(ListItemButton, {
     },
   };
 
+  const dotStyles = {
+    content: '""',
+    borderRadius: '50%',
+    position: 'absolute',
+    width: 6,
+    height: 6,
+    left: -12,
+    opacity: 1,
+    backgroundColor: theme.palette.primary.main,
+    transition: theme.transitions.create(['opacity'], {
+      duration: theme.transitions.duration.shortest,
+    }),
+  };
+
   return {
     // Root item
     ...(!subItem && {
@@ -134,6 +148,10 @@ const StyledNavItem = styled(ListItemButton, {
       }),
       '&:hover': {
         backgroundColor: 'transparent',
+        '&:before': {
+          ...dotStyles,
+          opacity: 0.64,
+        },
       },
       '& .icon': {
         ...baseStyles.icon,
@@ -154,6 +172,7 @@ const StyledNavItem = styled(ListItemButton, {
       ...(active && {
         color: theme.palette.primary.main,
         fontWeight: theme.typography.fontWeightSemiBold,
+        '&:before': dotStyles,
       }),
       ...(opened && {
         opacity: 0.64,

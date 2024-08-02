@@ -10,9 +10,11 @@ import { fShortenNumber } from 'src/utils/format-number';
 
 import { _mock } from 'src/_mock';
 
+import { alpha, styled } from '@mui/material/styles';
+import Button, { buttonClasses } from '@mui/material/Button';
+
 import Image from 'src/components/image';
 import CountUp from 'src/components/count-up';
-import Button from '@mui/material/Button';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
@@ -25,6 +27,17 @@ const SUMMARY = [
     { name: 'Site visitors', number: 10679 },
     { name: 'Verified hotels', number: 877 },
 ];
+
+const StyledButton = styled(Button)(({ theme }) => ({
+    flexShrink: 0,
+    padding: '5px 12px',
+    // color: theme.palette.common.white,
+    // border: `solid 1px ${alpha(theme.palette.common.black, 0.24)}`,
+    // background: `linear-gradient(180deg, ${theme.palette.grey[900]} 0%, ${theme.palette.common.black} 100%)`,
+    [`& .${buttonClasses.startIcon}`]: {
+        marginLeft: 0,
+    },
+}));
 
 // ----------------------------------------------------------------------
 
@@ -58,18 +71,18 @@ export default function TravelAbout() {
                             mx: { xs: 'auto', md: 0 },
                         }}
                     />
-                    <Typography variant="h3">
+
+                    <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+                        Get the Best For Your Shipments
+                    </Typography>
+
+                    <Typography variant="h3" sx={{ my: 2 }} >
                         Small Business Discount Shipping Solutions
                     </Typography>
 
-                    <Button
-                        size="large"
-                        color="inherit"
-                        endIcon={<Iconify icon="carbon:chevron-right" />}
-                        sx={{ my: 5 }}
-                    >
-                        Get in Touch
-                    </Button>
+                    <AppStoreButton />
+
+
                 </Grid>
 
                 <Grid xs={12} md={6} lg={6}>
@@ -83,8 +96,54 @@ export default function TravelAbout() {
                         <br />
                         Plus, members get access to more exclusive savings, expert advice on business issues, and a strong voice at all levels of government.
                     </Typography>
+
+                    <Button
+                        size="large"
+                        color="inherit"
+                        endIcon={<Iconify icon="carbon:chevron-right" />}
+                        sx={{ my: 3 }}
+                    >
+                        Get in Touch
+                    </Button>
                 </Grid>
             </Grid>
         </Container>
+    );
+}
+
+function AppStoreButton({ ...other }) {
+    return (
+        <Stack direction="row" flexWrap="wrap" spacing={2} {...other}
+            sx={{
+                my: 5,
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}>
+            <StyledButton >
+                <Image
+                    src='/assets/images/travel/home-cfib-en.svg'
+                    sx={{
+                        width: '100%',
+                        height: '100%',
+                        maxWidth: '200px',
+                        mx: 'auto',
+                        color: 'primary.main',
+                    }}
+                />
+            </StyledButton>
+
+            <StyledButton >
+                <Image
+                    src='/assets/images/travel/aeroplan.svg'
+                    sx={{
+                        width: '100%',
+                        height: '100%',
+                        maxWidth: '200px',
+                        mx: 'auto',
+                        color: 'primary.main',
+                    }}
+                />
+            </StyledButton>
+        </Stack >
     );
 }

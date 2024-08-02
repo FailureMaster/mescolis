@@ -27,7 +27,7 @@ import SvgColor from 'src/components/svg-color';
 
 import { CustomTabs } from 'src/components/custom-tabs';
 import { useTabs } from 'src/hooks/use-tabs';
-import { fontSize, fontWeight, margin } from '@mui/system';
+import { fontSize, fontWeight, margin, padding } from '@mui/system';
 // import { UserNewEditForm } from './user-new-edit-form';
 import MarketingContactForm from './marketing-contact-form';
 import FilterKeyword from '../filters/filter-keyword';
@@ -52,7 +52,6 @@ export default function CareerLandingHero() {
         filterLocation: null,
         filterLocation2: null,
     });
-
     const handleChangeKeyword = useCallback(
         (newValue) => {
             setFilters({
@@ -62,7 +61,6 @@ export default function CareerLandingHero() {
         },
         [filters]
     );
-
     const handleChangeLocation = useCallback(
         (newValue) => {
             setFilters({
@@ -72,7 +70,6 @@ export default function CareerLandingHero() {
         },
         [filters]
     );
-
     const handleChangeLocation2 = useCallback(
         (newValue) => {
             setFilters({
@@ -82,7 +79,6 @@ export default function CareerLandingHero() {
         },
         [filters]
     );
-
     const renderFilters = (
         <Stack
             spacing={{ xs: 1, md: 0 }}
@@ -96,9 +92,7 @@ export default function CareerLandingHero() {
                 marginTop: 1,
             }}
         >
-
             <MarketingContactForm />
-
         </Stack>
     );
 
@@ -194,11 +188,12 @@ export default function CareerLandingHero() {
             slotProps={{ tab: { px: 0 } }}
             sx={{
                 fontWeight: 400,
-                borderRadius: 1, marginTop: 4, marginBottom: 1,
+                borderRadius: 1,
+                marginTop: 4,
+                marginBottom: 1,
                 '& .Mui-selected': {
-                    color: 'white', // Active tab text color
+                    color: 'white',
                 },
-
             }}
         >
             {TABS.map((tab) => (
@@ -237,15 +232,11 @@ export default function CareerLandingHero() {
                                 <Typography variant="h2" sx={{ color: 'primary.main' }}>
                                     Mescolis
                                 </Typography>
-
                                 <Typography variant="h3" sx={{ color: 'common.white' }}>
                                     Express Courier Shipping
                                 </Typography>
-
                                 {renderTabs}
-
                                 {renderFilters}
-
                             </Stack>
 
                             {/* {renderBrands} */}

@@ -62,7 +62,7 @@ export default function MarketingAbout() {
     return (
         <Container
             sx={{
-                pt: { xs: 5, md: 10 },
+                pt: {},
                 pb: 10,
             }}
         >
@@ -84,7 +84,16 @@ export default function MarketingAbout() {
                         textAlign: { xs: 'center', md: 'left' },
                     }}
                 >
-                    <Typography variant="h2">Ship for Less</Typography>
+                    <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+                        Discounted Shipping with Top Couriers
+                    </Typography>
+
+                    <Typography variant="h2" sx={{ my: 3 }}>
+                        Ship for
+                        <Box component="span" sx={{ color: 'primary.main' }}>
+                            {` Less `}
+                        </Box>
+                    </Typography>
 
                     <Typography sx={{ mt: 3, mb: 5, color: 'text.secondary' }}>
                         We work with the most trusted couriers you love & trust to provide you with a multitude of discount shipping services.

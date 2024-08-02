@@ -2,19 +2,22 @@ import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import Image from 'src/components/image';
+import { max } from 'date-fns';
+import { width } from '@mui/system';
 
 // ----------------------------------------------------------------------
 
 const BENEFITS = [
     {
         title: 'Reliable Shipping Solutions',
-        description: 'Experience fast and secure shipping with our reliable delivery services, ensuring your packages arrive safely and on time.',
+        description: 'Experience fast and secure shipping with our delivery services, ensuring your packages arrive safely and on time.',
         iconColor: 'primary',
     },
     {
@@ -25,13 +28,13 @@ const BENEFITS = [
     {
         title: 'Customized Freight Services',
         description: 'Get tailored freight services that fit your needs, with flexible options for air, sea, or land transport.',
-        iconColor: 'secondary',
+        iconColor: 'primary',
     },
 
     {
         title: 'Eco-Friendly Transportation',
-        description: 'Choose our eco-friendly transportation options to reduce your carbon footprint while ensuring efficient and responsible delivery.',
-        iconColor: 'primary',
+        description: 'Choose our eco-friendly transportation options to reduce your carbon footprint with efficient and responsible delivery.',
+        iconColor: 'secondary',
     },
 ];
 
@@ -48,8 +51,12 @@ export default function MarketingServicesBenefits() {
             }}
         >
             <Container>
+
                 <Typography variant="h2" sx={{ textAlign: 'center' }}>
-                    Fast, Easy, and Free.
+                    Mescolis is
+                    <Box component="span" sx={{ color: 'primary.main' }}>
+                        {` Fast, Easy, and Free. `}
+                    </Box>
                 </Typography>
 
                 <Typography
@@ -69,7 +76,7 @@ export default function MarketingServicesBenefits() {
                     sx={{
                         display: 'grid',
                         alignItems: 'center',
-                        gap: { xs: 4, md: 8 },
+                        gap: { xs: 2, md: 4 },
                         gridTemplateColumns: { md: 'repeat(3, 1fr)' },
                     }}
                 >
@@ -79,8 +86,15 @@ export default function MarketingServicesBenefits() {
                         ))}
                     </Stack>
 
-                    {mdUp && <Image alt="benefits" src="/assets/illustrations/smart-delivery.svg" sx={{
-                        width: 450,
+                    {/* {mdUp && <Image alt="benefits" src="/assets/illustrations/smart-delivery.svg" sx={{
+                        maxWidth: 480,
+                        width: '100%',
+                        margin: 'auto',
+                    }} />} */}
+
+                    {mdUp && <Image alt="benefits" src="/assets/illustrations/mescolisrates.png" sx={{
+                        // maxWidth: 480,
+                        width: '100%',
                         margin: 'auto',
                     }} />}
 
@@ -90,6 +104,18 @@ export default function MarketingServicesBenefits() {
                         ))}
                     </Stack>
                 </Box>
+
+
+                <Stack alignItems="center">
+                    <Button
+                        color="inherit"
+                        size="large"
+                        variant="outlined"
+                        sx={{ mt: 5 }}
+                    >
+                        Try your first quote
+                    </Button>
+                </Stack>
             </Container>
         </Box>
     );
@@ -103,17 +129,13 @@ function BenefitItem({ benefit, reverse, index }) {
     return (
         <Stack
             spacing={1}
-            direction={{ xs: 'row', md: reverse ? 'row-reverse' : 'row' }}
+            direction={{
+                xs: 'row',
+                md: 'row',
+            }}
             sx={{
                 ...(reverse && {
-                    textAlign: { md: 'right' },
-                }),
-                ...(index === 1 && {
-                    pl: { md: 6 },
-                    ...(reverse && {
-                        pl: { md: 0 },
-                        pr: { md: 6 },
-                    }),
+                    textAlign: { md: 'left' },
                 }),
             }}
         >
@@ -138,12 +160,14 @@ function BenefitItem({ benefit, reverse, index }) {
             />
 
             <Stack spacing={1}>
-                <Typography variant="h5" sx={{ fontSize: 24 }}>{title}</Typography>
-
-                <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: 16 }}>
+                <Typography variant="h4">
+                    {title}
+                </Typography>
+                <Typography sx={{ color: 'text.secondary' }}>
                     {description}
                 </Typography>
             </Stack>
+
         </Stack>
     );
 }

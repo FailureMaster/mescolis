@@ -104,23 +104,6 @@ const StyledNavItem = styled(ListItemButton, {
       }),
     }),
 
-    // Sub item
-    ...(subItem && {
-      ...theme.typography.body2,
-      padding: 0,
-      fontSize: 13,
-      color: theme.palette.text.secondary,
-      '&:hover': {
-        backgroundColor: 'transparent',
-        color: theme.palette.text.primary,
-      },
-      ...(active && {
-        color: theme.palette.text.primary,
-        fontWeight: theme.typography.fontWeightSemiBold,
-        '&:before': dotStyles,
-      }),
-    }),
-
     // Open
     ...(opened && {
       '&:before': {

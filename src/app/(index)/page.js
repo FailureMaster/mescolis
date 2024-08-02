@@ -1,5 +1,6 @@
-import HomeView from 'src/sections/_home/view/home-view';
-import CareerLandingView from 'src/sections/_career/view/career-landing-view';
+// import HomeView from 'src/sections/_home/view/home-view';
+// import CareerLandingView from 'src/sections/_career/view/career-landing-view';
+import ElearningLandingView from 'src/sections/_elearning/view/elearning-landing-view';
 
 // ----------------------------------------------------------------------
 
@@ -9,5 +10,6 @@ export const metadata = {
 
 export default function HomePage() {
   // return <HomeView />;
-  return <CareerLandingView />;
+  // return <CareerLandingView />;
+  return <ElearningLandingView />;
 }

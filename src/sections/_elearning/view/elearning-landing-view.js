@@ -7,6 +7,8 @@ import {
   _brandsColor,
   _testimonials,
   _coursesByCategories,
+  _tours,
+  _jobsByCountries,
 } from 'src/_mock';
 
 import ElearningTeam from '../team/elearning-team';
@@ -19,6 +21,11 @@ import ElearningLandingIntroduce from '../landing/elearning-landing-introduce';
 import ElearningLatestPosts from '../../blog/elearning/elearning-latest-posts';
 import ElearningLandingCategories from '../landing/elearning-landing-categories';
 import ElearningLandingFeaturedCourses from '../landing/elearning-landing-featured-courses';
+import MarketingLandingAbout from '../marketing-landing-about';
+import CareerNewsletter from '../career-newsletter';
+import CareerLandingConnections from '../career-landing-connections';
+import ElearningLandingQuote from '../elearning-landing-quote';
+import MarketingNewsletter from '../marketing-newsletter';
 
 // ----------------------------------------------------------------------
 
@@ -27,23 +34,18 @@ export default function ElearningLandingView() {
     <>
       <ElearningLandingHero />
 
-      <ElearningOurClients brands={_brandsColor} />
+      <MarketingLandingAbout brands={_brandsColor} />
 
       <ElearningLandingIntroduce />
 
-      <ElearningLandingFeaturedCourses courses={_courses} />
+      <CareerLandingConnections  />
 
-      <ElearningLandingCategories categories={_coursesByCategories} />
+      <CareerNewsletter />
 
-      <ElearningTeam members={_members.slice(0, 4)} />
+      <ElearningLandingQuote />
 
-      <ElearningTestimonial testimonials={_testimonials} />
+      <MarketingNewsletter />
 
-      <ElearningLatestPosts posts={_coursePosts.slice(0, 4)} />
-
-      <ElearningDownloadApp />
-
-      <ElearningNewsletter />
     </>
   );
 }
