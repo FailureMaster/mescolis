@@ -35,6 +35,15 @@ export const secondary = {
   contrastText: '#FFFFFF',
 };
 
+// export const secondary = {
+//   lighter: '#FFF3D8',
+//   light: '#FFD08B',
+//   main: '#FF9F3E',
+//   dark: '#B75C1F',
+//   darker: '#7A2D0B',
+//   contrastText: '#FFFFFF',
+// };
+
 export const info = {
   lighter: '#CAFDF5',
   light: '#61F3F3',
