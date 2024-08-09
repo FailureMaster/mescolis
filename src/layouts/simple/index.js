@@ -1,19 +1,3 @@
-import PropTypes from 'prop-types';
+export * from './main';
 
-import Header from '../common/header-simple';
-
-// ----------------------------------------------------------------------
-
-export default function SimpleLayout({ children }) {
-  return (
-    <>
-      <Header />
-
-      {children}
-    </>
-  );
-}
-
-SimpleLayout.propTypes = {
-  children: PropTypes.node,
-};
+export * from './layout';
