@@ -1,3 +1,1 @@
-export * from './classes';
-
-export * from './svg-color';
+export { default } from './svg-color';

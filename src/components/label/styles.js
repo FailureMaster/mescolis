@@ -1,79 +1,55 @@
-'use client';
-
 import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
-
-import { varAlpha, stylesMode } from 'src/theme/styles';
+import { alpha, styled } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
-export const StyledLabel = styled(Box)(({ theme, ownerState: { color, variant } }) => {
-  const defaultColor = {
-    ...(color === 'default' && {
-      /**
-       * @variant filled
-       */
-      ...(variant === 'filled' && {
-        color: theme.vars.palette.common.white,
-        backgroundColor: theme.vars.palette.text.primary,
-        [stylesMode.dark]: { color: theme.vars.palette.grey[800] },
+export const StyledLabel = styled(Box)(({ theme, ownerState }) => {
+  const lightMode = theme.palette.mode === 'light';
+
+  const filledVariant = ownerState.variant === 'filled';
+
+  const outlinedVariant = ownerState.variant === 'outlined';
+
+  const softVariant = ownerState.variant === 'soft';
+
+  const defaultStyle = {
+    ...(ownerState.color === 'default' && {
+      // FILLED
+      ...(filledVariant && {
+        color: lightMode ? theme.palette.common.white : theme.palette.grey[800],
+        backgroundColor: theme.palette.text.primary,
       }),
-      /**
-       * @variant outlined
-       */
-      ...(variant === 'outlined' && {
+      // OUTLINED
+      ...(outlinedVariant && {
         backgroundColor: 'transparent',
-        color: theme.vars.palette.text.primary,
-        border: `2px solid ${theme.vars.palette.text.primary}`,
+        color: theme.palette.text.primary,
+        border: `2px solid ${theme.palette.text.primary}`,
       }),
-      /**
-       * @variant soft
-       */
-      ...(variant === 'soft' && {
-        color: theme.vars.palette.text.secondary,
-        backgroundColor: varAlpha(theme.vars.palette.grey['500Channel'], 0.16),
-      }),
-      /**
-       * @variant inverted
-       */
-      ...(variant === 'inverted' && {
-        color: theme.vars.palette.grey[800],
-        backgroundColor: theme.vars.palette.grey[300],
+      // SOFT
+      ...(softVariant && {
+        color: theme.palette.text.secondary,
+        backgroundColor: alpha(theme.palette.grey[500], 0.16),
       }),
     }),
   };
 
-  const styleColors = {
-    ...(color !== 'default' && {
-      /**
-       * @variant filled
-       */
-      ...(variant === 'filled' && {
-        color: theme.vars.palette[color].contrastText,
-        backgroundColor: theme.vars.palette[color].main,
+  const colorStyle = {
+    ...(ownerState.color !== 'default' && {
+      // FILLED
+      ...(filledVariant && {
+        color: theme.palette[ownerState.color].contrastText,
+        backgroundColor: theme.palette[ownerState.color].main,
       }),
-      /**
-       * @variant outlined
-       */
-      ...(variant === 'outlined' && {
+      // OUTLINED
+      ...(outlinedVariant && {
         backgroundColor: 'transparent',
-        color: theme.vars.palette[color].main,
-        border: `2px solid ${theme.vars.palette[color].main}`,
+        color: theme.palette[ownerState.color].main,
+        border: `2px solid ${theme.palette[ownerState.color].main}`,
       }),
-      /**
-       * @variant soft
-       */
-      ...(variant === 'soft' && {
-        color: theme.vars.palette[color].dark,
-        backgroundColor: varAlpha(theme.vars.palette[color].mainChannel, 0.16),
-        [stylesMode.dark]: { color: theme.vars.palette[color].light },
-      }),
-      /**
-       * @variant inverted
-       */
-      ...(variant === 'inverted' && {
-        color: theme.vars.palette[color].darker,
-        backgroundColor: theme.vars.palette[color].lighter,
+      // SOFT
+      ...(softVariant && {
+        color: theme.palette[ownerState.color][lightMode ? 'dark' : 'light'],
+        backgroundColor: alpha(theme.palette[ownerState.color].main, 0.16),
       }),
     }),
   };
@@ -82,19 +58,20 @@ export const StyledLabel = styled(Box)(({ theme, ownerState: { color, variant } 
     height: 24,
     minWidth: 24,
     lineHeight: 0,
+    borderRadius: 6,
     cursor: 'default',
     alignItems: 'center',
     whiteSpace: 'nowrap',
     display: 'inline-flex',
     justifyContent: 'center',
+    textTransform: 'capitalize',
     padding: theme.spacing(0, 0.75),
     fontSize: theme.typography.pxToRem(12),
     fontWeight: theme.typography.fontWeightBold,
-    borderRadius: theme.shape.borderRadius * 0.75,
     transition: theme.transitions.create('all', {
       duration: theme.transitions.duration.shorter,
     }),
-    ...defaultColor,
-    ...styleColors,
+    ...defaultStyle,
+    ...colorStyle,
   };
 });

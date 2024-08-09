@@ -1,3 +1,2 @@
-export * from './settings-provider';
-
-export * from './use-settings-context';
+export { SettingsProvider } from './settings-provider';
+export { useSettingsContext } from './settings-context';

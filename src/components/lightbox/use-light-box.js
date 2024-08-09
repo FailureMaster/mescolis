@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 
 // ----------------------------------------------------------------------
 
-export function useLightBox(slides) {
+export default function useLightbox(slides) {
   const [selected, setSelected] = useState(-1);
 
   const handleOpen = useCallback(

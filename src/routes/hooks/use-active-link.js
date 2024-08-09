@@ -1,55 +1,17 @@
-import { usePathname } from './use-pathname';
-import { hasParams, removeParams, isExternalLink, removeLastSlash } from '../utils';
+import { usePathname } from 'next/navigation';
 
 // ----------------------------------------------------------------------
 
-export function useActiveLink(itemPath, deep = true) {
-  const pathname = removeLastSlash(usePathname());
+export function useActiveLink(path, deep = true) {
+  const pathname = usePathname();
 
-  const pathHasParams = hasParams(itemPath);
+  const checkPath = path.startsWith('#');
 
-  /* Start check */
-  const notValid = itemPath.startsWith('#') || isExternalLink(itemPath);
+  const currentPath = path === '/' ? '/' : `${path}/`;
 
-  if (notValid) {
-    return false;
-  }
-  /* End check */
+  const normalActive = !checkPath && pathname === currentPath;
 
-  /**
-   * [1] Apply for Item has children or has params.
-   */
-  const isDeep = deep || pathHasParams;
+  const deepActive = !checkPath && pathname.includes(currentPath);
 
-  // console.info(isDeep ? '[deep]   :' : '[normal] :', itemPath, '-?-', pathname);
-
-  if (isDeep) {
-    /**
-     * [1] Deep: default
-     * @itemPath 			 = '/dashboard/user'
-     * @match pathname = '/dashboard/user'
-     * @match pathname = '/dashboard/user/list'
-     * @match pathname = '/dashboard/user/e99f09a7-dd88-49d5-b1c8-1daf80c2d7b15/edit'
-     */
-    const defaultActive = pathname.includes(itemPath);
-
-    /**
-     * [1] Deep: has params
-     * @itemPath 			 = '/dashboard/test?id=e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1'
-     * @match pathname = '/dashboard/test'
-     */
-
-    const originItemPath = removeParams(itemPath);
-
-    const hasParamsActive = pathHasParams && originItemPath === pathname;
-
-    return defaultActive || hasParamsActive;
-  }
-
-  /**
-   * [1] Normal: active
-   * @itemPath 			 = '/dashboard/calendar'
-   * @match pathname = '/dashboard/calendar'
-   */
-  return pathname === itemPath;
+  return deep ? deepActive : normalActive;
 }

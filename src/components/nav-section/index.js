@@ -1,13 +1,3 @@
-export * from './mini';
-
-export * from './hooks';
-
-export * from './styles';
-
-export * from './classes';
-
-export * from './css-vars';
-
-export * from './vertical';
-
-export * from './horizontal';
+export { default as NavSectionMini } from './mini';
+export { default as NavSectionVertical } from './vertical';
+export { default as NavSectionHorizontal } from './horizontal';

@@ -2,7 +2,7 @@ import NoSsr from '@mui/material/NoSsr';
 import { tabClasses } from '@mui/material/Tab';
 import { useTheme } from '@mui/material/styles';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
-
+import PropTypes from 'prop-types';
 import { stylesMode } from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
@@ -16,6 +16,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
         gap: { sm: 0 },
         minHeight: 38,
         flexShrink: 0,
+
         alignItems: 'center',
         bgcolor: 'background.neutral',
         [`& .${tabsClasses.scroller}`]: {
@@ -40,7 +41,7 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
             height: 1,
             borderRadius: 1,
             display: 'block',
-            bgcolor: 'common.white',
+            bgcolor: '#212b36',
             boxShadow: theme.customShadows.z1,
             [stylesMode.dark]: { bgcolor: 'grey.900' },
             ...slotProps?.indicator,
@@ -71,3 +72,16 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
     </Tabs>
   );
 }
+
+CustomTabs.propTypes = {
+  children: PropTypes.node,
+  slotProps: PropTypes.shape({
+    scroller: PropTypes.string,
+    flexContainer: PropTypes.string,
+    scrollButtons: PropTypes.string,
+    indicator: PropTypes.string,
+    tab: PropTypes.string,
+    selected: PropTypes.string,
+  }),
+  sx: PropTypes.object,
+};

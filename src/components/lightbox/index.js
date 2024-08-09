@@ -1,3 +1,5 @@
-export * from './lightbox';
+export * from 'yet-another-react-lightbox';
 
-export * from './use-light-box';
+export { default } from './lightbox';
+
+export { default as useLightbox } from './use-light-box';

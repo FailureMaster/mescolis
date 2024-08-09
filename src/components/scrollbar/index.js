@@ -1,3 +1,1 @@
-export * from './classes';
-
-export * from './scrollbar';
+export { default } from './scrollbar';

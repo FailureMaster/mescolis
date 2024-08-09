@@ -1,5 +1,3 @@
-import { useMemo } from 'react';
-
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -8,24 +6,27 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 export function useResponsive(query, start, end) {
   const theme = useTheme();
 
-  const getQuery = useMemo(() => {
-    switch (query) {
-      case 'up':
-        return theme.breakpoints.up(start);
-      case 'down':
-        return theme.breakpoints.down(start);
-      case 'between':
-        return theme.breakpoints.between(start, end);
-      case 'only':
-        return theme.breakpoints.only(start);
-      default:
-        return theme.breakpoints.up('xs');
-    }
-  }, [theme, query, start, end]);
+  const mediaUp = useMediaQuery(theme.breakpoints.up(start));
 
-  const mediaQueryResult = useMediaQuery(getQuery);
+  const mediaDown = useMediaQuery(theme.breakpoints.down(start));
 
-  return mediaQueryResult;
+  const mediaBetween = useMediaQuery(theme.breakpoints.between(start, end));
+
+  const mediaOnly = useMediaQuery(theme.breakpoints.only(start));
+
+  if (query === 'up') {
+    return mediaUp;
+  }
+
+  if (query === 'down') {
+    return mediaDown;
+  }
+
+  if (query === 'between') {
+    return mediaBetween;
+  }
+
+  return mediaOnly;
 }
 
 // ----------------------------------------------------------------------
@@ -33,14 +34,14 @@ export function useResponsive(query, start, end) {
 export function useWidth() {
   const theme = useTheme();
 
-  const keys = useMemo(() => [...theme.breakpoints.keys].reverse(), [theme]);
+  const keys = [...theme.breakpoints.keys].reverse();
 
-  const width = keys.reduce((output, key) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const matches = useMediaQuery(theme.breakpoints.up(key));
+  return (
+    keys.reduce((output, key) => {
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const matches = useMediaQuery(theme.breakpoints.up(key));
 
-    return !output && matches ? key : output;
-  }, null);
-
-  return width || 'xs';
+      return !output && matches ? key : output;
+    }, null) || 'xs'
+  );
 }
