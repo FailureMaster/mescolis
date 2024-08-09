@@ -1,4 +1,4 @@
-// import { Toaster } from 'sonner';
+import { Toaster } from 'sonner';
 
 import { styled } from '@mui/material/styles';
 
@@ -8,7 +8,7 @@ import { toasterClasses } from './classes';
 
 // ----------------------------------------------------------------------
 
-export const StyledToaster = styled()(({ theme }) => {
+export const StyledToaster = styled(Toaster)(({ theme }) => {
   const baseStyles = {
     toastDefault: {
       padding: theme.spacing(1, 1, 1, 1.5),
