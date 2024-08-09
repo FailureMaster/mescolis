@@ -9,7 +9,7 @@ export const defaultSettings = {
   direction: 'ltr',
   contrast: 'default',
   navLayout: 'vertical',
-  primaryColor: 'default',
+  primaryColor: 'blue', // original is default. Change to other color as primary color
   navColor: 'integrate',
   compactLayout: true,
   fontFamily: defaultFont,

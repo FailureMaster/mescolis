@@ -60,7 +60,7 @@ export function HeaderBase({
     signIn = true,
     account = true,
     helpLink = true,
-    settings = false,
+    settings = true,
     purchase = true,
     contacts = true,
     searchbar = true,
