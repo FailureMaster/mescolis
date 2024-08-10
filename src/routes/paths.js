@@ -72,6 +72,11 @@ export const paths = {
   registerIllustration: '/auth/register-illustration',
   forgotPassword: '/auth/forgot-password',
   verify: '/auth/verify',
+  // Main
+  howItWorks: '/how-it-works',
+  ourPartners: '/our-partners',
+  couriers: '/couriers',
+
   // Common
   maintenance: '/maintenance',
   comingsoon: '/coming-soon',

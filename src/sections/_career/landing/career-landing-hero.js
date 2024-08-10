@@ -46,6 +46,7 @@ export default function CareerLandingHero() {
     const theme = useTheme();
     const tabs = useTabs('package');
     const mdUp = useResponsive('up', 'md');
+    const smUp = useResponsive('up', 'sm');
 
     const [filters, setFilters] = useState({
         filterKeyword: null,
@@ -207,7 +208,9 @@ export default function CareerLandingHero() {
         <Box
             sx={{
                 ...bgGradient({
-                    color: alpha(theme.palette.grey[900], 0.8),
+                    color: mdUp
+                        ? alpha(theme.palette.grey[900], 0.8) // Darker color on larger screens
+                        : alpha(theme.palette.grey[400], 0.4), // Lighter color on mobile
                     imgUrl: '/assets/background/overlay_2.jpg',
                 }),
                 pt: 15,
@@ -229,8 +232,8 @@ export default function CareerLandingHero() {
                             }}
                         >
                             <Stack sx={{}}>
-                                <Typography variant="h2" sx={{ color: 'primary.main' }}>
-                                    Mescolis
+                                <Typography variant="h1" sx={{ color: 'primary.main' }}>
+                                    MesColis
                                 </Typography>
                                 <Typography variant="h3" sx={{ color: 'common.white' }}>
                                     Express Courier Shipping
@@ -252,6 +255,6 @@ export default function CareerLandingHero() {
                     )}
                 </Grid>
             </Container>
-        </Box>
+        </Box >
     );
 }

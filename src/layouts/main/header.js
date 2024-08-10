@@ -67,9 +67,10 @@ export default function Header({ headerOnDark }) {
                             {
                                 title: 'How It Works',
                                 icon: <Iconify icon="solar:home-2-bold-duotone" />,
-                                path: '#',
+                                path: '/how-it-works',
                             },
-                            { title: 'Our Partners', path: '#' },
+                            { title: 'Our Mission', path: '#' },
+                            { title: 'Our Partners', path: '/our-partners' },
                             {
                                 title: 'Couriers',
                                 path: '#',
@@ -80,16 +81,17 @@ export default function Header({ headerOnDark }) {
                                     { title: 'Rest of the World', path: '#' },
                                 ],
                             },
-                            {
-                                title: 'Resources',
-                                path: '#',
-                                icon: <Iconify icon="solar:file-bold-duotone" />,
-                                children: [
-                                    { title: 'Support', path: '#' },
-                                    { title: 'Developers', path: '#' },
-                                    { title: 'Blog', path: '#' },
-                                ],
-                            },
+                            { title: 'FAQ', path: '#' },
+                            // {
+                            //     title: 'Resources',
+                            //     path: '#',
+                            //     icon: <Iconify icon="solar:file-bold-duotone" />,
+                            //     children: [
+                            //         { title: 'Support', path: '#' },
+                            //         { title: 'Developers', path: '#' },
+                            //         { title: 'Blog', path: '#' },
+                            //     ],
+                            // },
 
                         ]}
                     />

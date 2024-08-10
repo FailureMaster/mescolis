@@ -46,13 +46,13 @@ export default function CareerLandingStep() {
                 <Typography variant="h2" sx={{ my: 3 }}>
                     How Can
                     <Box component="span" sx={{ color: 'primary.main' }}>
-                        {` Mescolis `}
+                        {` MesColis `}
                     </Box>
                     Help Me?
                 </Typography>
 
                 <Typography sx={{ color: 'text.secondary', maxWidth: 550, mx: 'auto' }}>
-                    Mescolis user-friendly tools make it easy to process and manage shipments, leaving you free to take care of your business.
+                    MesColis user-friendly tools make it easy to process and manage shipments, leaving you free to take care of your business.
                     Get rates, print labels, ship, track and manage shipments, all in one place.
                 </Typography>
 

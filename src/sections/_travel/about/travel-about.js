@@ -37,7 +37,6 @@ export default function TravelAbout() {
             }}
         >
 
-
             <Grid container spacing={3}>
                 {(smUp ? IMAGES : IMAGES.slice(0, 1)).map((img, index) => (
                     <Grid key={img} xs={12} sm={6} md={index === 0 ? 6 : 2}>
