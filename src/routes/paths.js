@@ -75,8 +75,14 @@ export const paths = {
   // Main
   howItWorks: '/how-it-works',
   ourPartners: '/our-partners',
-  couriers: '/couriers',
-
+  ourMission: '/our-mission',
+  couriers: {
+    root: '/couriers/',
+    canada: '/couriers/ca',
+    unitedStates: '/couriers/us',
+    restOfTheWorld: '/couriers/rest-of-the-world/',
+  },
+  faq: '/faq',
   // Common
   maintenance: '/maintenance',
   comingsoon: '/coming-soon',

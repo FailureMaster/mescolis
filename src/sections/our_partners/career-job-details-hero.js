@@ -45,7 +45,7 @@ export default function CareerJobDetailsHero({ job }) {
                 <CustomBreadcrumbs
                     links={[
                         { name: 'Home', href: '/' },
-                        { name: 'Our Partners' },
+                        { name: 'FAQS' },
                     ]}
                     sx={{
                         mb: { xs: 5, md: 8 },
@@ -63,11 +63,9 @@ export default function CareerJobDetailsHero({ job }) {
                 >
                     <Stack spacing={{ xs: 3, md: 2 }} sx={{ color: 'common.white', mx: 'auto' }}>
                         <Typography variant="h3" component="h1">
-                            Offer Your Members Discounted Shipping Rates as a MesColis Partner
+                            FAQS
                         </Typography>
-                        <Typography>
-                            Increase Membership Value with ShipTime!
-                        </Typography>
+
                     </Stack>
 
 

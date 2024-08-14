@@ -116,16 +116,21 @@ export const _brandsColor = BRANDS_COMPANY.map((brand, index) => ({
 // ----------------------------------------------------------------------
 
 export const _faqs = [
-  'Sed augue ipsum, egestas nec, vestibulum et',
-  'alesuada adipiscing, dui vestibulum suscipit nulla quis orci.',
-  'Ut varius tincidunt libero',
-  'In ut quam vitae odio lacinia tincidunt.',
-  'Fusce vel dui Morbi nec metus.',
+  'What is MesColis?',
+  'What Can I Ship with MesColis?',
+  'Where can I Ship?',
+  'Can I Ship Dangerous Goods through MesColis?',
+  'What is Dimensional Weight?',
 ].map((question, index) => ({
   id: _mock.id(index),
   question,
-  answer:
-    'Amazing experience i love it a lot. Thanks to the team that dreams come true, great! I appreciate there attitude and approach.',
+  answer: [
+    'MesColis is a reliable shipping service for various types of packages.',
+    'With MesColis, you can ship a wide range of items, excluding restricted goods.',
+    'You can ship to various locations, both domestically and internationally.',
+    'MesColis does not allow the shipment of dangerous goods due to safety regulations.',
+    'Dimensional weight is a pricing method based on the package size rather than its actual weight.',
+  ][index],
 }));
 
 export const _faqsSupport = [

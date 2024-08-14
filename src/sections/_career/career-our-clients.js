@@ -15,7 +15,6 @@ import Divider from '@mui/material/Divider';
 
 export default function CareerOurClients({ brands }) {
     const theme = useTheme();
-
     const carousel = useCarousel({
         slidesToShow: 6,
         slidesToScroll: 1,
@@ -34,7 +33,6 @@ export default function CareerOurClients({ brands }) {
             },
         ],
     });
-
     return (
         <Container
             sx={{

@@ -13,7 +13,7 @@ import Typography from '@mui/material/Typography';
 import { useBoolean } from 'src/hooks/use-boolean';
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { _jobs, _mock, _socials } from 'src/_mock';
+import { _jobs, _mock, _socials, _tours } from 'src/_mock';
 
 import Iconify from 'src/components/iconify';
 import { SplashScreen } from 'src/components/loading-screen';
@@ -22,6 +22,8 @@ import Advertisement from '../../advertisement';
 import CareerJobDetailsInfo from '../career-job-details-info';
 import CareerJobDetailsHero from '../career-job-details-hero';
 import MarketingAboutStory from '../marketing-about-story';
+import TravelAbout from '../travel-about';
+import TravelLandingToursByCity from '../travel-landing-tours-by-city';
 
 // ----------------------------------------------------------------------
 
@@ -47,11 +49,12 @@ export default function OurPartnersView() {
 
     return (
         <>
+            <TravelAbout />
+
+            <TravelLandingToursByCity tours={_tours.slice(0, 10)} />
 
             {/* <CareerJobDetailsHero job={_mockJob} /> */}
-
             {/* <MarketingAboutStory /> */}
-
         </>
     );
 }
