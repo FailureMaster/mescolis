@@ -68,9 +68,9 @@ export default function OurMissionsView() {
 
             <ElearningAbout />
 
-            <ElearningTeam members={_members} />
+            {/* <ElearningTeam members={_members} /> */}
 
-            <ElearningTestimonial testimonials={_testimonials} />
+            {/* <ElearningTestimonial testimonials={_testimonials} /> */}
 
             {/* <MarketingAboutStory /> */}
         </>
