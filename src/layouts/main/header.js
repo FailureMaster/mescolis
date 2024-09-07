@@ -70,7 +70,7 @@ export default function Header({ headerOnDark }) {
                                 path: '/how-it-works',
                             },
                             { title: 'Our Mission', path: '/our-mission' },
-                            { title: 'Our Partners', path: '/our-partners' },
+                            // { title: 'Our Partners', path: '/our-partners' },
                             {
                                 title: 'Couriers',
                                 path: '/couriers',
