@@ -26,11 +26,10 @@ import { bgGradient } from 'src/theme/css';
 import Iconify from 'src/components/iconify';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-import getVariant from './get-variant';
-
 import { CustomTabs } from 'src/components/custom-tabs';
 import { useTabs } from 'src/hooks/use-tabs';
 
+import getVariant from './get-variant';
 import MarketingContactForm from './marketing-contact-form';
 
 // ----------------------------------------------------------------------
@@ -148,11 +147,11 @@ export default function CareerJobDetailsHero({ job }) {
                         onClose={handleClose}
                         PaperComponent={(props) => (
                             <m.div {...getVariant('fadeIn')}>
-                                <Paper {...props}>{props.children}</Paper>
+                                <Paper {...props} />
                             </m.div>
                         )}
                     >
-                        <DialogTitle>{`Express Courier Shipping`}</DialogTitle>
+                        <DialogTitle>Express Courier Shipping</DialogTitle>
 
                         <DialogContent>
                             {renderTabs}

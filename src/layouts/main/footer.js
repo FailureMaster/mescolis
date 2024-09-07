@@ -110,20 +110,25 @@ export default function Footer() {
                     <Grid xs={12} md={3}>
                         <Stack spacing={1} alignItems="flex-start">
                             <Typography variant="h6">Quick Links</Typography>
-                            <Link variant="body2" sx={{ color: 'text.primary' }}>
+
+                            <Link href="/" variant="body2" sx={{ color: 'text.primary' }}>
+                                Home
+                            </Link>
+
+                            <Link href="/how-it-works" variant="body2" sx={{ color: 'text.primary' }}>
                                 How it Works
                             </Link>
 
-                            <Link variant="body2" sx={{ color: 'text.primary' }}>
-                                Our Partners
+                            <Link href="/our-mission" variant="body2" sx={{ color: 'text.primary' }}>
+                                Our Mission
                             </Link>
 
-                            <Link variant="body2" sx={{ color: 'text.primary' }}>
+                            <Link href="/couriers" variant="body2" sx={{ color: 'text.primary' }}>
                                 Couriers
                             </Link>
 
-                            <Link variant="body2" sx={{ color: 'text.primary' }}>
-                                Resources
+                            <Link href='/faq' variant="body2" sx={{ color: 'text.primary' }}>
+                                FAQ
                             </Link>
                         </Stack>
                     </Grid>

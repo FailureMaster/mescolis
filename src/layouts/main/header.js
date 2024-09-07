@@ -64,6 +64,7 @@ export default function Header({ headerOnDark }) {
                             },
                         }}
                         data={[
+                            { title: 'Home', path: '/' },
                             {
                                 title: 'How It Works',
                                 icon: <Iconify icon="solar:home-2-bold-duotone" />,
@@ -111,9 +112,8 @@ export default function Header({ headerOnDark }) {
             <Stack spacing={2} direction="row" alignItems="center" justifyContent="flex-end">
 
                 <Button
-                    href=''
+                    href='https://mesdash.wise-choice.net/'
                     variant="outlined"
-                    target="_blank"
                     rel="noopener"
                     sx={{
                         display: { xs: 'none', md: 'inline-flex' },
@@ -125,8 +125,7 @@ export default function Header({ headerOnDark }) {
                 <Button
                     variant="contained"
                     color="inherit"
-                    href=''
-                    target="_blank"
+                    href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
                     rel="noopener"
                     sx={{
                         display: { xs: 'none', md: 'inline-flex' },
@@ -139,37 +138,23 @@ export default function Header({ headerOnDark }) {
             {!mdUp &&
                 <NavMobile
                     data={[
+                        { title: 'Home', path: '/' },
                         {
                             title: 'How It Works',
-                            icon: <Iconify icon="solar:home-2-bold-duotone" />,
-                            path: '#',
+                            path: '/how-it-works',
                         },
-                        {
-                            title: 'Our Partners',
-                            path: '#',
-                            icon: <Iconify icon="solar:file-bold-duotone" />,
-                        },
+                        { title: 'Our Mission', path: '/our-mission' },
+                        // { title: 'Our Partners', path: '/our-partners' },
                         {
                             title: 'Couriers',
-                            path: '#',
-                            icon: <Iconify icon="solar:file-bold-duotone" />,
+                            path: '/couriers',
                             children: [
-                                { title: 'Canada', path: '#' },
-                                { title: 'United States', path: '#' },
-                                { title: 'Rest of the World', path: '#' },
+                                { title: 'Canada', path: '/couriers/ca' },
+                                { title: 'United States', path: '/couriers/us' },
+                                { title: 'Rest of the World', path: '/couriers/rest-of-the-world' },
                             ],
                         },
-                        {
-                            title: 'Resources',
-                            path: '#',
-                            icon: <Iconify icon="solar:file-bold-duotone" />,
-                            children: [
-                                { title: 'Support', path: '#' },
-                                { title: 'Developers', path: '#' },
-                                { title: 'Blog', path: '#' },
-                            ],
-                        },
-
+                        { title: 'FAQ', path: '/faq' },
                     ]}
                 />
             }
