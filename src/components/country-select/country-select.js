@@ -40,7 +40,8 @@ export default function CountrySelect({
               icon={`circle-flags:${country.code?.toLowerCase()}`}
               sx={{ mr: 1 }}
             />
-            {country.label} ({country.code}) +{country.phone}
+            {country.label} 
+            {/* ({country.code}) +{country.phone} */}
           </li>
         );
       }}
