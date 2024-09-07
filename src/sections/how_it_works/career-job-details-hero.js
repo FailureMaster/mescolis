@@ -4,6 +4,7 @@ import { m, AnimatePresence } from 'framer-motion';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -25,14 +26,24 @@ import { bgGradient } from 'src/theme/css';
 import Iconify from 'src/components/iconify';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
-import getVariant from './get-variant'; 
+import getVariant from './get-variant';
+
+import { CustomTabs } from 'src/components/custom-tabs';
+import { useTabs } from 'src/hooks/use-tabs';
 
 import MarketingContactForm from './marketing-contact-form';
 
 // ----------------------------------------------------------------------
 
+const TABS = [
+    { value: 'package', label: 'Package' },
+    { value: 'envelope', label: 'Envelope' },
+    { value: 'ltl_freight', label: 'LTL (Freight)' },
+];
+
 export default function CareerJobDetailsHero({ job }) {
     const theme = useTheme();
+    const tabs = useTabs('package');
 
     const [favorite, setFavorite] = useState(job.favorited);
 
@@ -50,6 +61,27 @@ export default function CareerJobDetailsHero({ job }) {
     const handleClose = () => {
         setOpen(false);
     };
+
+    const renderTabs = (
+        <CustomTabs
+            value={tabs.value}
+            onChange={tabs.onChange}
+            variant="fullWidth"
+            slotProps={{ tab: { px: 0 } }}
+            sx={{
+                fontWeight: 400,
+                borderRadius: 1,
+                marginBottom: 2,
+                '& .Mui-selected': {
+                    color: 'white',
+                },
+            }}
+        >
+            {TABS.map((tab) => (
+                <Tab key={tab.value} value={tab.value} label={tab.label} sx={{ fontWeight: 400 }} />
+            ))}
+        </CustomTabs>
+    );
 
     return (
         <Box
@@ -123,6 +155,7 @@ export default function CareerJobDetailsHero({ job }) {
                         <DialogTitle>{`Express Courier Shipping`}</DialogTitle>
 
                         <DialogContent>
+                            {renderTabs}
                             <MarketingContactForm />
                         </DialogContent>
 
