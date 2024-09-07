@@ -59,9 +59,8 @@ export default function NavMobile({ data }) {
                     <Stack spacing={1.5} sx={{ p: 3 }}>
 
                         <Button
-                            href=''
+                            href='https://mesdash.wise-choice.net/'
                             variant="outlined"
-                            target="_blank"
                             rel="noopener"
                         >
                             Sign in
@@ -71,8 +70,7 @@ export default function NavMobile({ data }) {
                             fullWidth
                             variant="contained"
                             color="inherit"
-                            href={paths.zoneStore}
-                            target="_blank"
+                            href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
                             rel="noopener"
                         >
                             Sign Out

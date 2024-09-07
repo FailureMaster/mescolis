@@ -53,6 +53,7 @@ export default function MarketingNewsletter({ sx, ...other }) {
                                         size="large"
                                         color="inherit"
                                         variant="contained"
+                                        href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
                                         sx={{
                                             height: 54,
                                             borderTopLeftRadius: 0,
