@@ -146,6 +146,7 @@ export default function MarketingAboutStory() {
                                             color="primary"
                                             size="medium"
                                             variant="contained"
+                                            href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
                                             sx={{ flexShrink: 0 }}
                                         >
                                             Register Now
