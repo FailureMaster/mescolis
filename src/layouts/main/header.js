@@ -67,32 +67,42 @@ export default function Header({ headerOnDark }) {
                             {
                                 title: 'How It Works',
                                 icon: <Iconify icon="solar:home-2-bold-duotone" />,
-                                path: '#',
+                                path: '/how-it-works',
                             },
-                            { title: 'Our Partners', path: '#' },
+                            { title: 'Our Mission', path: '/our-mission' },
+                            { title: 'Our Partners', path: '/our-partners' },
                             {
                                 title: 'Couriers',
-                                path: '#',
+                                path: '/couriers',
                                 icon: <Iconify icon="solar:file-bold-duotone" />,
                                 children: [
-                                    { title: 'Canada', path: '#' },
-                                    { title: 'United States', path: '#' },
-                                    { title: 'Rest of the World', path: '#' },
+                                    { title: 'Canada', path: '/couriers/ca' },
+                                    { title: 'United States', path: '/couriers/us' },
+                                    { title: 'Rest of the World', path: '/couriers/rest-of-the-world' },
                                 ],
                             },
-                            {
-                                title: 'Resources',
-                                path: '#',
-                                icon: <Iconify icon="solar:file-bold-duotone" />,
-                                children: [
-                                    { title: 'Support', path: '#' },
-                                    { title: 'Developers', path: '#' },
-                                    { title: 'Blog', path: '#' },
-                                ],
-                            },
+                            { title: 'FAQ', path: '/faq' },
+                            // {
+                            //     title: 'Resources',
+                            //     path: '#',
+                            //     icon: <Iconify icon="solar:file-bold-duotone" />,
+                            //     children: [
+                            //         { title: 'Support', path: '#' },
+                            //         { title: 'Developers', path: '#' },
+                            //         { title: 'Blog', path: '#' },
+                            //     ],
+                            // },
 
                         ]}
                     />
+                    {/* <NavDesktop
+                        slotProps={{
+                            rootItem: {
+                                '& .icon': { display: 'none' },
+                            },
+                        }}
+                        data={navConfig}
+                    /> */}
                 </Stack>
 
                 <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />

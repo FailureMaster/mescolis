@@ -20,49 +20,49 @@ import TravelLandingFavoriteDestinations from '../landing/travel-landing-favorit
 // ----------------------------------------------------------------------
 
 export default function TravelLandingView() {
-  return (
-    <>
-      <Box sx={{ position: 'relative' }}>
-        <TravelLandingHero tours={_tours.slice(0, 5)} />
+    return (
+        <>
+            <Box sx={{ position: 'relative' }}>
+                <TravelLandingHero tours={_tours.slice(0, 5)} />
 
-        <Container
-          sx={{
-            mb: { md: 10 },
-            left: { md: 0 },
-            right: { md: 0 },
-            bottom: { md: 0 },
-            mx: { md: 'auto' },
-            pt: { xs: 3, md: 0 },
-            position: { md: 'absolute' },
-          }}
-        >
-          <TravelFilters
-            sx={{
-              color: { md: 'common.white' },
-              bgcolor: (theme) => ({
-                xs: 'background.neutral',
-                md: alpha(theme.palette.common.white, 0.08),
-              }),
-            }}
-          />
-        </Container>
-      </Box>
+                <Container
+                    sx={{
+                        mb: { md: 10 },
+                        left: { md: 0 },
+                        right: { md: 0 },
+                        bottom: { md: 0 },
+                        mx: { md: 'auto' },
+                        pt: { xs: 3, md: 0 },
+                        position: { md: 'absolute' },
+                    }}
+                >
+                    <TravelFilters
+                        sx={{
+                            color: { md: 'common.white' },
+                            bgcolor: (theme) => ({
+                                xs: 'background.neutral',
+                                md: alpha(theme.palette.common.white, 0.08),
+                            }),
+                        }}
+                    />
+                </Container>
+            </Box>
 
-      <TravelLandingIntroduce />
+            <TravelLandingIntroduce />
 
-      <TravelLandingSummary />
+            <TravelLandingSummary />
 
-      <TravelLandingFavoriteDestinations tours={_tours.slice(0, 4)} />
+            <TravelLandingFavoriteDestinations tours={_tours.slice(0, 4)} />
 
-      <TravelLandingTourFeatured tours={_tours.slice(0, 4)} />
+            <TravelLandingTourFeatured tours={_tours.slice(0, 4)} />
 
-      <TravelLandingToursByCity tours={_tours.slice(0, 8)} />
+            <TravelLandingToursByCity tours={_tours.slice(0, 8)} />
 
-      <BlogTravelLandingLatestPosts posts={_travelPosts.slice(2, 6)} />
+            <BlogTravelLandingLatestPosts posts={_travelPosts.slice(2, 6)} />
 
-      <TravelTestimonial testimonials={_testimonials} />
+            <TravelTestimonial testimonials={_testimonials} />
 
-      <TravelNewsletter />
-    </>
-  );
+            <TravelNewsletter />
+        </>
+    );
 }

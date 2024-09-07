@@ -9,12 +9,12 @@ import Typography from '@mui/material/Typography';
 
 import Image from 'src/components/image';
 import Carousel, { useCarousel } from 'src/components/carousel';
+import Divider from '@mui/material/Divider';
 
 // ----------------------------------------------------------------------
 
 export default function CareerOurClients({ brands }) {
     const theme = useTheme();
-
     const carousel = useCarousel({
         slidesToShow: 6,
         slidesToScroll: 1,
@@ -33,7 +33,6 @@ export default function CareerOurClients({ brands }) {
             },
         ],
     });
-
     return (
         <Container
             sx={{
@@ -69,6 +68,8 @@ export default function CareerOurClients({ brands }) {
                     </Box>
                 ))}
             </Carousel>
+
+            <Divider sx={{ borderStyle: 'dashed', mt: 10 }} />
         </Container>
     );
 }

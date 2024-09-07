@@ -1,5 +1,6 @@
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
@@ -13,6 +14,7 @@ import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
 import CountUp from 'src/components/count-up';
 import { margin, width } from '@mui/system';
+import { he } from 'date-fns/locale';
 
 // ----------------------------------------------------------------------
 
@@ -24,6 +26,16 @@ const SUMMARY = [
     { title: 'Shipment Delivered', total: 20000, icon: 'carbon:data-vis-4' },
     { title: 'Happy clients', total: 32000, icon: 'carbon:user-certification' },
 ];
+
+const LISTS = [
+    'Fastest Delivery',
+    'Secure & Safe',
+    'Affordable Price',
+    'Customer Support',
+    'Global Reach',
+    'World-wide Shipping',
+];
+
 
 // ----------------------------------------------------------------------
 
@@ -62,17 +74,19 @@ export default function MarketingAbout() {
     return (
         <Container
             sx={{
-                pt: { xs: 5, md: 10 },
+                pt: {},
                 pb: 10,
             }}
         >
             <Grid container spacing={3} justifyContent="space-between" alignItems="center">
 
-                <Grid xs={12} md={6} lg={5} sx={{
+                <Grid xs={12} md={6} lg={6} sx={{
                     mb: { xs: 5, md: 0 },
+                    pr: { xs: 0, md: 8 },
                 }}>
                     <Image alt="teams" src="/assets/images/marketing/melcoris_hero.png" sx={{
                         margin: 'auto',
+                        height: { xs: '100%', md: 420 },
                     }} />
                 </Grid>
 
@@ -84,27 +98,53 @@ export default function MarketingAbout() {
                         textAlign: { xs: 'center', md: 'left' },
                     }}
                 >
-                    <Typography variant="h2">Ship for Less</Typography>
+                    {/* <Typography variant="overline" sx={{ color: 'text.disabled' }}>
+                        Discounted Shipping with Top Couriers
+                    </Typography> */}
 
-                    <Typography sx={{ mt: 3, mb: 5, color: 'text.secondary' }}>
-                        We work with the most trusted couriers you love & trust to provide you with a multitude of discount shipping services.
-                        <br />
-                        <br />
-                        From Purolator to GLS, Canpar, Canada Post, FedEx and more!
+                    <Typography variant="h2" sx={{ my: 3 }}>
+                        Best
+                        <Box component="span" sx={{ color: 'primary.main' }}>
+                            {` Shipping `}
+                        </Box>
+                        Solutions
                     </Typography>
+
+                    <Typography sx={{ mt: 3, mb: 3, color: 'text.secondary' }}>
+                        Our mission is to provide you with the best shipping solutions that meet your unique needs. We partner with the most trusted couriers in the industry, ensuring that your shipments are handled with care and delivered on time, every time.
+                    </Typography>
+
+                    <Stack spacing={2}>
+                        {LISTS.map((text) => (
+                            <Stack key={text} direction="row" alignItems="center">
+                                <Box
+                                    component="span"
+                                    sx={{
+                                        mr: 2,
+                                        width: 6,
+                                        height: 6,
+                                        borderRadius: '50%',
+                                        bgcolor: 'primary.main',
+                                    }}
+                                />
+                                {text}
+                            </Stack>
+                        ))}
+                    </Stack>
 
                     <Button
                         variant="outlined"
                         color="inherit"
                         size="large"
                         endIcon={<Iconify icon="carbon:chevron-right" />}
+                        sx={{ mt: 3 }}
                     >
-                        Carriers
+                        Try Your First Quote
                     </Button>
                 </Grid>
             </Grid>
 
-            <Box
+            {/* <Box
                 sx={{
                     mt: 10,
                     textAlign: 'center',
@@ -134,7 +174,7 @@ export default function MarketingAbout() {
                         <Typography sx={{ color: 'text.secondary' }}>{value.title}</Typography>
                     </div>
                 ))}
-            </Box>
+            </Box> */}
         </Container>
     );
 }

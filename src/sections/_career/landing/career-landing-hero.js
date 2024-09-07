@@ -27,7 +27,7 @@ import SvgColor from 'src/components/svg-color';
 
 import { CustomTabs } from 'src/components/custom-tabs';
 import { useTabs } from 'src/hooks/use-tabs';
-import { fontSize, fontWeight, margin } from '@mui/system';
+import { fontSize, fontWeight, margin, padding } from '@mui/system';
 // import { UserNewEditForm } from './user-new-edit-form';
 import MarketingContactForm from './marketing-contact-form';
 import FilterKeyword from '../filters/filter-keyword';
@@ -46,13 +46,13 @@ export default function CareerLandingHero() {
     const theme = useTheme();
     const tabs = useTabs('package');
     const mdUp = useResponsive('up', 'md');
+    const smUp = useResponsive('up', 'sm');
 
     const [filters, setFilters] = useState({
         filterKeyword: null,
         filterLocation: null,
         filterLocation2: null,
     });
-
     const handleChangeKeyword = useCallback(
         (newValue) => {
             setFilters({
@@ -62,7 +62,6 @@ export default function CareerLandingHero() {
         },
         [filters]
     );
-
     const handleChangeLocation = useCallback(
         (newValue) => {
             setFilters({
@@ -72,7 +71,6 @@ export default function CareerLandingHero() {
         },
         [filters]
     );
-
     const handleChangeLocation2 = useCallback(
         (newValue) => {
             setFilters({
@@ -82,7 +80,6 @@ export default function CareerLandingHero() {
         },
         [filters]
     );
-
     const renderFilters = (
         <Stack
             spacing={{ xs: 1, md: 0 }}
@@ -96,9 +93,7 @@ export default function CareerLandingHero() {
                 marginTop: 1,
             }}
         >
-
             <MarketingContactForm />
-
         </Stack>
     );
 
@@ -194,11 +189,12 @@ export default function CareerLandingHero() {
             slotProps={{ tab: { px: 0 } }}
             sx={{
                 fontWeight: 400,
-                borderRadius: 1, marginTop: 4, marginBottom: 1,
+                borderRadius: 1,
+                marginTop: 4,
+                marginBottom: 1,
                 '& .Mui-selected': {
-                    color: 'white', // Active tab text color
+                    color: 'white',
                 },
-
             }}
         >
             {TABS.map((tab) => (
@@ -212,7 +208,9 @@ export default function CareerLandingHero() {
         <Box
             sx={{
                 ...bgGradient({
-                    color: alpha(theme.palette.grey[900], 0.8),
+                    color: mdUp
+                        ? alpha(theme.palette.grey[900], 0.8) // Darker color on larger screens
+                        : alpha(theme.palette.grey[400], 0.4), // Lighter color on mobile
                     imgUrl: '/assets/background/overlay_2.jpg',
                 }),
                 pt: 15,
@@ -234,18 +232,14 @@ export default function CareerLandingHero() {
                             }}
                         >
                             <Stack sx={{}}>
-                                <Typography variant="h2" sx={{ color: 'primary.main' }}>
-                                    Mescolis
+                                <Typography variant="h1" sx={{ color: 'primary.main' }}>
+                                    MesColis
                                 </Typography>
-
                                 <Typography variant="h3" sx={{ color: 'common.white' }}>
                                     Express Courier Shipping
                                 </Typography>
-
                                 {renderTabs}
-
                                 {renderFilters}
-
                             </Stack>
 
                             {/* {renderBrands} */}
@@ -261,6 +255,6 @@ export default function CareerLandingHero() {
                     )}
                 </Grid>
             </Container>
-        </Box>
+        </Box >
     );
 }

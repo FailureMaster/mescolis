@@ -34,6 +34,7 @@ export default function MarketingCaseStudiesView() {
         </Stack>
 
         <MarketingCaseStudyList caseStudies={_caseStudies} />
+
       </Container>
 
       <MarketingTestimonial testimonials={_testimonials} />

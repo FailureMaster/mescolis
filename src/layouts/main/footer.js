@@ -82,7 +82,7 @@ export default function Footer() {
                                 <Logo />
 
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    The all-in-one platform for shipping – Mescolis allows you to ship packages, envelopes, and LTL (Freight) while generating the appropriate documentation for you.
+                                    The all-in-one platform for shipping – MesColis allows you to ship packages, envelopes, and LTL (Freight) while generating the appropriate documentation for you.
                                 </Typography>
                             </Stack>
 
@@ -166,7 +166,7 @@ export default function Footer() {
                     sx={{ py: 3, textAlign: 'center' }}
                 >
                     <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                        Mescolis © 2024. All rights reserved
+                        MesColis © 2024. All rights reserved
                     </Typography>
 
                     <Stack direction="row" spacing={3} justifyContent="center">

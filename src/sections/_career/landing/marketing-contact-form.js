@@ -18,7 +18,8 @@ import { _tags } from 'src/_mock';
 import FormProvider, { RHFSlider, RHFTextField } from 'src/components/hook-form';
 
 import FilterKeyword from '../filters/filter-keyword';
-import FilterLocation from '../filters/filter-location';
+import FilterOrigin from '../filters/filter-origin';
+import FilterDestination from '../filters/filter-destination';
 
 // ----------------------------------------------------------------------
 
@@ -115,7 +116,7 @@ export default function MarketingContactForm() {
                     direction={{ xs: 'row', md: 'row' }}
                     sx={{ width: 1, marginTop: 2 }}
                 >
-                    <FilterLocation
+                    <FilterOrigin
                         filterLocation={filters.filterLocation}
                         onChangeLocation={handleChangeLocation}
                         sx={{
@@ -134,7 +135,7 @@ export default function MarketingContactForm() {
                     direction={{ xs: 'row', md: 'row' }}
                     sx={{ width: 1, marginTop: 2 }}
                 >
-                    <FilterLocation
+                    <FilterDestination
                         filterLocation2={filters.filterLocation2}
                         onChangeLocation={handleChangeLocation2}
                         sx={{

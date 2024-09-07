@@ -1,194 +1,123 @@
 import PropTypes from 'prop-types';
-import { useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Fade from '@mui/material/Fade';
 import Stack from '@mui/material/Stack';
-import Paper from '@mui/material/Paper';
-import Portal from '@mui/material/Portal';
-import Grid from '@mui/material/Unstable_Grid2';
-import ListSubheader from '@mui/material/ListSubheader';
+import Popover from '@mui/material/Popover';
 
 import { usePathname } from 'src/routes/hooks';
-import { RouterLink } from 'src/routes/components';
 import { useActiveLink } from 'src/routes/hooks/use-active-link';
-
-import { useBoolean } from 'src/hooks/use-boolean';
-
-import Label from 'src/components/label';
-import Image from 'src/components/image';
 
 import NavItem from './nav-item';
 
 // ----------------------------------------------------------------------
 
-export default function NavList({ data }) {
-  const pathname = usePathname();
+export default function NavList({ data, depth, slotProps }) {
+    const navRef = useRef(null);
 
-  const menuOpen = useBoolean();
+    const pathname = usePathname();
 
-  const active = useActiveLink(data.path, !!data.children);
+    const active = useActiveLink(data.path, !!data.children);
 
-  const mainList = data.children ? data.children.filter((list) => list.subheader !== 'Common') : [];
+    const [openMenu, setOpenMenu] = useState(false);
 
-  const commonList = data.children
-    ? data.children.find((list) => list.subheader === 'Common')
-    : null;
+    useEffect(() => {
+        if (openMenu) {
+            handleCloseMenu();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname]);
 
-  useEffect(() => {
-    if (menuOpen.value) {
-      menuOpen.onFalse();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+    const handleOpenMenu = useCallback(() => {
+        if (data.children) {
+            setOpenMenu(true);
+        }
+    }, [data.children]);
 
-  const handleOpenMenu = useCallback(() => {
-    if (data.children) {
-      menuOpen.onTrue();
-    }
-  }, [data.children, menuOpen]);
+    const handleCloseMenu = useCallback(() => {
+        setOpenMenu(false);
+    }, []);
 
-  return (
-    <>
-      <NavItem
-        open={menuOpen.value}
-        onMouseEnter={handleOpenMenu}
-        onMouseLeave={menuOpen.onFalse}
-        //
-        title={data.title}
-        path={data.path}
-        //
-        active={active}
-        hasChild={!!data.children}
-        externalLink={data.path.includes('http')}
-      />
+    return (
+        <>
+            <NavItem
+                ref={navRef}
+                open={openMenu}
+                onMouseEnter={handleOpenMenu}
+                onMouseLeave={handleCloseMenu}
+                //
+                title={data.title}
+                path={data.path}
+                caption={data.caption}
+                icon={data.icon}
+                //
+                depth={depth}
+                hasChild={!!data.children}
+                externalLink={!!data.path.includes('http')}
+                //
+                active={active}
+                className={active ? 'active' : ''}
+                sx={depth === 1 ? slotProps?.rootItem : slotProps?.subItem}
+            />
 
-      {!!data.children && menuOpen.value && (
-        <Portal>
-          <Fade in={menuOpen.value}>
-            <Paper
-              onMouseEnter={handleOpenMenu}
-              onMouseLeave={menuOpen.onFalse}
-              sx={{
-                top: 62,
-                width: 1,
-                borderRadius: 0,
-                position: 'fixed',
-                bgcolor: 'background.default',
-                zIndex: (theme) => theme.zIndex.modal,
-                boxShadow: (theme) => theme.customShadows.dialog,
-              }}
-            >
-              <Grid container columns={15}>
-                <Grid xs={12}>
-                  <Box
-                    gap={5}
-                    display="grid"
-                    gridTemplateColumns="repeat(5, 1fr)"
-                    sx={{
-                      p: 5,
-                      height: 1,
-                      position: 'relative',
-                      bgcolor: 'background.neutral',
+            {!!data.children && (
+                <Popover
+                    disableScrollLock
+                    open={openMenu}
+                    anchorEl={navRef.current}
+                    anchorOrigin={
+                        depth === 1
+                            ? { vertical: 'bottom', horizontal: 'left' }
+                            : { vertical: 'center', horizontal: 'right' }
+                    }
+                    transformOrigin={
+                        depth === 1
+                            ? { vertical: 'top', horizontal: 'left' }
+                            : { vertical: 'center', horizontal: 'left' }
+                    }
+                    slotProps={{
+                        paper: {
+                            onMouseEnter: handleOpenMenu,
+                            onMouseLeave: handleCloseMenu,
+                            sx: {
+                                mt: '-2px',
+                                minWidth: 160,
+                                ...(openMenu && {
+                                    pointerEvents: 'auto',
+                                }),
+                            },
+                        },
                     }}
-                  >
-                    {mainList.map((list) => (
-                      <NavSubList
-                        key={list.subheader}
-                        subheader={list.subheader}
-                        cover={list.cover}
-                        items={list.items}
-                        isNew={list.isNew}
-                      />
-                    ))}
-                  </Box>
-                </Grid>
-
-                {commonList && (
-                  <Grid xs={3}>
-                    <Box sx={{ bgcolor: 'background.default', p: 5 }}>
-                      <NavSubList subheader={commonList.subheader} items={commonList.items} />
-                    </Box>
-                  </Grid>
-                )}
-              </Grid>
-            </Paper>
-          </Fade>
-        </Portal>
-      )}
-    </>
-  );
+                    sx={{
+                        pointerEvents: 'none',
+                    }}
+                >
+                    <NavSubList data={data.children} depth={depth} slotProps={slotProps} />
+                </Popover>
+            )}
+        </>
+    );
 }
 
 NavList.propTypes = {
-  data: PropTypes.object,
+    data: PropTypes.object,
+    depth: PropTypes.number,
+    slotProps: PropTypes.object,
 };
 
 // ----------------------------------------------------------------------
 
-function NavSubList({ subheader, isNew, cover, items }) {
-  const pathname = usePathname();
-
-  const coverPath = items.length ? items[0].path : '';
-
-  const commonList = subheader === 'Common';
-
-  return (
-    <Stack spacing={2}>
-      <ListSubheader
-        sx={{
-          p: 0,
-          typography: 'h6',
-          color: 'text.primary',
-          bgcolor: 'transparent',
-        }}
-      >
-        {subheader}
-        {isNew && (
-          <Label color="info" sx={{ ml: 1 }}>
-            NEW
-          </Label>
-        )}
-      </ListSubheader>
-
-      {!commonList && (
-        <Link component={RouterLink} href={coverPath}>
-          <Image
-            disabledEffect
-            alt={cover}
-            src={cover || '/assets/placeholder.svg'}
-            ratio="16/9"
-            sx={{
-              borderRadius: 1,
-              cursor: 'pointer',
-              boxShadow: (theme) => theme.customShadows.z8,
-              transition: (theme) => theme.transitions.create('all'),
-              '&:hover': {
-                opacity: 0.8,
-                boxShadow: (theme) => theme.customShadows.z24,
-              },
-            }}
-          />
-        </Link>
-      )}
-
-      <Stack spacing={1.5} alignItems="flex-start">
-        {items.map((item) => {
-          const active = pathname === item.path || pathname === `${item.path}/`;
-
-          return (
-            <NavItem key={item.title} title={item.title} path={item.path} active={active} subItem />
-          );
-        })}
-      </Stack>
-    </Stack>
-  );
+function NavSubList({ data, depth, slotProps }) {
+    return (
+        <Stack spacing={0.5}>
+            {data.map((list) => (
+                <NavList key={list.title} data={list} depth={depth + 1} slotProps={slotProps} />
+            ))}
+        </Stack>
+    );
 }
 
 NavSubList.propTypes = {
-  cover: PropTypes.string,
-  isNew: PropTypes.bool,
-  items: PropTypes.array,
-  subheader: PropTypes.string,
+    data: PropTypes.array,
+    depth: PropTypes.number,
+    slotProps: PropTypes.object,
 };

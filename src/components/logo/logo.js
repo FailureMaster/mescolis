@@ -17,10 +17,10 @@ function Logo({ single = false, sx }) {
   const singleLogo = (
     <Box
       component="img"
-      src="/assets/logo/mescolis_shipping.jpg" // => Your path in public folder
+      src="/assets/logo/mescolis-logo.png" // => Your path in public folder
       sx={{
-        width: 40,
-        height: 40,
+        width: 80,
+        // height: 40,
         cursor: 'pointer',
         ...sx,
       }}
@@ -30,10 +30,10 @@ function Logo({ single = false, sx }) {
   const fullLogo = (
     <Box
       component="img"
-      src="/assets/logo/mescolis_logo.jpg" // => Your path in public folder
+      src="/assets/logo/mescolis-logo.png" // => Your path in public folder
       sx={{
-        width: 40,
-        height: 40,
+        width: 80,
+        // height: 65,
         cursor: 'pointer',
         ...sx,
       }}

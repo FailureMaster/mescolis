@@ -1,5 +1,7 @@
 'use client';
 
+import { useScroll } from 'framer-motion';
+
 import {
     _jobs,
     _careerPosts,
@@ -9,6 +11,8 @@ import {
     _jobsByCountries,
     _jobsByCategories,
 } from 'src/_mock';
+
+import ScrollProgress from 'src/components/scroll-progress';
 
 import CareerNewsletter from '../career-newsletter';
 import CareerOurClients from '../career-our-clients';
@@ -29,11 +33,16 @@ import MarketingServicesBenefits from '../marketing-services-benefits';
 import MarketingLandingProcess from '../marketing-landing-process';
 import MarketingNewsletter from '../marketing-newsletter';
 
+
 // ----------------------------------------------------------------------
 
 export default function CareerLandingView() {
+    const { scrollYProgress } = useScroll();
+
     return (
         <>
+            <ScrollProgress scrollYProgress={scrollYProgress} />
+
             <CareerLandingHero />
 
             <CareerLandingStep />
@@ -42,17 +51,15 @@ export default function CareerLandingView() {
 
             <MarketingAbout />
 
-            <TravelAbout />
+            {/* <TravelAbout /> */}
 
             <MarketingServicesBenefits />
 
             <MarketingLandingProcess />
 
-            {/* <CareerLandingConnections countries={_jobsByCountries} /> */}
+            {/* <CareerLandingForRecruiters /> */}
 
-            <CareerLandingForRecruiters />
-
-            <MarketingNewsletter />
+            {/* <MarketingNewsletter /> */}
 
         </>
     );
