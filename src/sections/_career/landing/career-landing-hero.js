@@ -190,7 +190,7 @@ export default function CareerLandingHero() {
             sx={{
                 fontWeight: 400,
                 borderRadius: 1,
-                marginTop: 4,
+                marginTop: 2,
                 marginBottom: 1,
                 '& .Mui-selected': {
                     color: 'white',
@@ -237,6 +237,9 @@ export default function CareerLandingHero() {
                                 </Typography>
                                 <Typography variant="h3" sx={{ color: 'common.white' }}>
                                     Express Courier Shipping
+                                </Typography>
+                                <Typography variant="h4" sx={{ color: 'lightgray' }}>
+                                    Save up to 70%
                                 </Typography>
                                 {renderTabs}
                                 {renderFilters}
