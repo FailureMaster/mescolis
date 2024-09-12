@@ -11,7 +11,7 @@ import { useHoverParallax } from 'src/hooks/use-hover-parallax';
 import Image from 'src/components/image';
 import SvgColor from 'src/components/svg-color';
 
-import Icon from './icon';
+import Icon from './icon2';
 import Label from './label';
 import Shape from './shape';
 import Dot from './dots';
@@ -59,26 +59,60 @@ const animateUp = (duration = 60) => ({
 
 const getRandom = (min, max) => Math.random() * (max - min) + min;
 
+// Define the glowing animation
 const animateGlow = () => ({
-  animate: {
-    scale: [1, getRandom(1.1, 1.3), 1],
-    boxShadow: [
-      '0 0 0px rgba(255, 255, 255, 0)',
-      '0 0 20px rgba(255, 255, 255, 0.8)',
-      '0 0 0px rgba(255, 255, 255, 0)',
-    ],
-    filter: [
-      'brightness(1)',
-      `brightness(${getRandom(1.2, 1.6)})`,
-      'brightness(1)',
-    ],
-  },
-  transition: {
-    duration: getRandom(1.5, 3),
-    repeat: Infinity,
-    ease: 'easeInOut',
-  },
+    animate: {
+        backgroundPosition: ['0% 0%', '100% 0%', '0% 100%', '100% 100%', '0% 0%'],
+        scale: [1, getRandom(1.1, 1.3), 1],
+        boxShadow: [
+            '0 0 0px rgba(255, 255, 255, 0)',
+            '0 0 20px rgba(255, 255, 255, 0.8)',
+            '0 0 0px rgba(255, 255, 255, 0)',
+        ],
+        filter: [
+            'brightness(1)',
+            `brightness(${getRandom(1.2, 1.6)})`,
+            'brightness(1)',
+        ],
+    },
+    transition: {
+        duration: getRandom(1.5, 3),
+        repeat: Infinity,
+        ease: 'easeInOut',
+        backgroundPosition: {
+            duration: 20,
+            repeat: Infinity,
+            ease: 'linear',
+        },
+    },
 });
+
+// Define button styles
+const buttonStyles = {
+    color: '#FFFFFF',
+    background: 'linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000)',
+    cursor: 'pointer',
+    position: 'relative',
+    zIndex: 0,
+    borderRadius: '20px',
+    userSelect: 'none',
+    WebkitUserSelect: 'none',
+    touchAction: 'manipulation',
+    backgroundSize: '400%',
+    animation: 'glow-container 5s linear infinite',
+    transition: 'opacity 0.3s ease-in-out',
+    overflow: 'hidden',
+};
+
+// Define the keyframes for the glow animation
+const keyframes = `
+    @keyframes glow-container {
+        0% { background-position: 0% 0%; }
+        50% { background-position: 100% 0%; }
+        100% { background-position: 0% 0%; }
+    }
+`;
+
 
 function Pattern02({ sx, ...other }) {
 
@@ -118,7 +152,7 @@ function Pattern02({ sx, ...other }) {
             <Circle hide component={m.div}>
                 <Box sx={{ position: 'absolute', top: 16, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px', ...buttonStyles }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
@@ -138,7 +172,7 @@ function Pattern02({ sx, ...other }) {
             <Circle hide component={m.div}>
                 <Box sx={{ position: 'absolute', top: 380, left: 35, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px', ...buttonStyles }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
@@ -159,7 +193,7 @@ function Pattern02({ sx, ...other }) {
             <Circle hide component={m.div}>
                 <Box sx={{ position: 'absolute', top: 380, left: 350, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px', ...buttonStyles }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
@@ -167,6 +201,7 @@ function Pattern02({ sx, ...other }) {
                                     <Typography sx={{ ...styleIconContent }}>62%</Typography>
                                 </>
                             }
+                     
                         />
                     </m.div>
                 </Box>
@@ -179,7 +214,7 @@ function Pattern02({ sx, ...other }) {
             <Circle component={m.div}>
                 <Box sx={{ position: 'absolute', top: 190, left: 410, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px', ...buttonStyles  }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
