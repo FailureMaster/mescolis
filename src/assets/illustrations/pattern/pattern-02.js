@@ -57,9 +57,27 @@ const animateUp = (duration = 60) => ({
     transition: { duration, repeat: Infinity, ease: 'linear' },
 });
 
-const animateGrow = (duration = 2) => ({
-    animate: { scale: [1, 1.2, 1] },
-    transition: { duration, repeat: Infinity, ease: 'easeInOut' },
+const getRandom = (min, max) => Math.random() * (max - min) + min;
+
+const animateGlow = () => ({
+  animate: {
+    scale: [1, getRandom(1.1, 1.3), 1],
+    boxShadow: [
+      '0 0 0px rgba(255, 255, 255, 0)',
+      '0 0 20px rgba(255, 255, 255, 0.8)',
+      '0 0 0px rgba(255, 255, 255, 0)',
+    ],
+    filter: [
+      'brightness(1)',
+      `brightness(${getRandom(1.2, 1.6)})`,
+      'brightness(1)',
+    ],
+  },
+  transition: {
+    duration: getRandom(1.5, 3),
+    repeat: Infinity,
+    ease: 'easeInOut',
+  },
 });
 
 function Pattern02({ sx, ...other }) {
@@ -100,7 +118,7 @@ function Pattern02({ sx, ...other }) {
             <Circle hide component={m.div}>
                 <Box sx={{ position: 'absolute', top: 16, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50) }} {...animateGrow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
@@ -120,7 +138,7 @@ function Pattern02({ sx, ...other }) {
             <Circle hide component={m.div}>
                 <Box sx={{ position: 'absolute', top: 380, left: 35, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50) }} {...animateGrow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
@@ -141,7 +159,7 @@ function Pattern02({ sx, ...other }) {
             <Circle hide component={m.div}>
                 <Box sx={{ position: 'absolute', top: 380, left: 350, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50) }} {...animateGrow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
@@ -161,7 +179,7 @@ function Pattern02({ sx, ...other }) {
             <Circle component={m.div}>
                 <Box sx={{ position: 'absolute', top: 190, left: 410, transform: 'translateX(20px)' }}>
                     {/* Apply the grow animation here */}
-                    <m.div style={{ x: offsetX(50), y: offsetY(50) }} {...animateGrow()}>
+                    <m.div style={{ x: offsetX(50), y: offsetY(50), borderRadius: '20px' }} {...animateGlow()}>
                         <Icon
                             color={WHITE}
                             content={
