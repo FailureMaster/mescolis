@@ -32,7 +32,7 @@ function Logo({ single = false, sx }) {
       component="img"
       src="/assets/logo/mescolis-logo.png" // => Your path in public folder
       sx={{
-        width: 80,
+        width: '150px !important',
         // height: 65,
         cursor: 'pointer',
         ...sx,
