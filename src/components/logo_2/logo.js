@@ -74,6 +74,7 @@ function Logo({ single = false, isScrolled = false, sx }) {
 Logo.propTypes = {
   single: PropTypes.bool,
   sx: PropTypes.object,
+  isScrolled: PropTypes.bool,
 };
 
 export default memo(Logo);
