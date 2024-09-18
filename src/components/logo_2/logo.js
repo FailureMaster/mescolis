@@ -9,15 +9,23 @@ import { RouterLink } from 'src/routes/components';
 
 // ----------------------------------------------------------------------
 
-function Logo({ single = false, sx }) {
+function Logo({ single = false, isScrolled = false, sx }) {
   const theme = useTheme();
 
   const PRIMARY_MAIN = theme.palette.primary.main;
 
+  const logoSrc = isScrolled
+    ? '/assets/logo/mescolis_black_logo.png'
+    : '/assets/logo/mescolis_white_logo.png';
+
+  const singleLogoSrc = isScrolled
+    ? '/assets/logo/mescolis_black_logo_single.png'
+    : '/assets/logo/mescolis_white_logo_single.png';
+
   const singleLogo = (
     <Box
       component="img"
-      src="/assets/logo/mescolis-logo.png" // => Your path in public folder
+      src={single ? singleLogoSrc : logoSrc}
       sx={{
         width: 80,
         // height: 40,
@@ -30,7 +38,7 @@ function Logo({ single = false, sx }) {
   const fullLogo = (
     <Box
       component="img"
-      src="/assets/logo/mescolis_white_logo.png" // => Your path in public folder
+      src={single ? singleLogoSrc : logoSrc}
       sx={{
         width: '180px!important',
         // height: 65,

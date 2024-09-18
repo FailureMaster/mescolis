@@ -16,7 +16,7 @@ import { useResponsive } from 'src/hooks/use-responsive';
 
 import { bgBlur } from 'src/theme/css';
 
-import Logo from 'src/components/logo';
+import Logo from 'src/components/logo_2';
 import Label from 'src/components/label';
 
 import { SignInButton } from 'src/components/sign-in-button';
@@ -44,7 +44,7 @@ export default function Header({ headerOnDark }) {
     const renderContent = (
         <>
             <Box sx={{ lineHeight: 0, position: 'relative' }}>
-                <Logo />
+                <Logo isScrolled={offset} />
             </Box>
 
             <>
