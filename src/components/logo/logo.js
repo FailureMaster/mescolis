@@ -30,7 +30,7 @@ function Logo({ single = false, sx }) {
   const fullLogo = (
     <Box
       component="img"
-      src="/assets/logo/mescolis_white_logo.png" // => Your path in public folder
+      src="/assets/logo/mescolis_title_only_black.png" // => Your path in public folder
       sx={{
         width: '180px!important',
         // height: 65,

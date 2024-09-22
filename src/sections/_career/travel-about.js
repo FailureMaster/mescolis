@@ -4,29 +4,17 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import { useResponsive } from 'src/hooks/use-responsive';
-
-import { fShortenNumber } from 'src/utils/format-number';
+import { styled } from '@mui/material/styles';
 
 import { _mock } from 'src/_mock';
 
-import { alpha, styled } from '@mui/material/styles';
 import Button, { buttonClasses } from '@mui/material/Button';
 
 import Image from 'src/components/image';
-import CountUp from 'src/components/count-up';
 import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
-const IMAGES = [...Array(4)].map((_, index) => _mock.image.travel(index + 2));
-
-const SUMMARY = [
-    { name: 'Air tickets sold', number: 130 },
-    { name: 'Tours booked', number: 196 },
-    { name: 'Site visitors', number: 10679 },
-    { name: 'Verified hotels', number: 877 },
-];
 
 const StyledButton = styled(Button)(({ theme }) => ({
     flexShrink: 0,
@@ -42,7 +30,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export default function TravelAbout() {
-    const smUp = useResponsive('up', 'sm');
 
     return (
         <Container

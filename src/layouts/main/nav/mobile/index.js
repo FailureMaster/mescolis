@@ -15,6 +15,7 @@ import { useBoolean } from 'src/hooks/use-boolean';
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 import { NavBasicMobile } from 'src/components/nav-basic';
 import NavList from './nav-list';
@@ -27,6 +28,8 @@ export default function NavMobile({ data }) {
     const pathname = usePathname();
 
     const mobileOpen = useBoolean();
+
+    const { trans } = useTranslation();
 
     useEffect(() => {
         if (mobileOpen.value) {
@@ -63,7 +66,7 @@ export default function NavMobile({ data }) {
                             variant="outlined"
                             rel="noopener"
                         >
-                            Sign in
+                            {trans('sign_in')}
                         </Button>
 
                         <Button
@@ -73,7 +76,7 @@ export default function NavMobile({ data }) {
                             href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
                             rel="noopener"
                         >
-                            Sign Out
+                            {trans('sign_up')}
                         </Button>
 
 

@@ -1,86 +1,32 @@
 import PropTypes from 'prop-types';
-import { useState, useCallback } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import Paper from '@mui/material/Paper';
-
-import { paths } from 'src/routes/paths';
-
-import { fDate } from 'src/utils/format-time';
 
 import { bgGradient } from 'src/theme/css';
 
-import Iconify from 'src/components/iconify';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
-import { CustomTabs } from 'src/components/custom-tabs';
-import { useTabs } from 'src/hooks/use-tabs';
-
-import getVariant from './get-variant';
-import MarketingContactForm from './marketing-contact-form';
-
-// ----------------------------------------------------------------------
-
-const TABS = [
-    { value: 'package', label: 'Package' },
-    { value: 'envelope', label: 'Envelope' },
-    { value: 'ltl_freight', label: 'LTL (Freight)' },
-];
+import GetQuoteModal from 'src/components/get-quote/modal';
 
 export default function CareerJobDetailsHero({ job }) {
+    const { trans } = useTranslation();
+    
     const theme = useTheme();
-    const tabs = useTabs('package');
-
-    const [favorite, setFavorite] = useState(job.favorited);
-
-    const handleChangeFavorite = useCallback((event) => {
-        setFavorite(event.target.checked);
-    }, []);
-
 
     const [open, setOpen] = useState(false); // State to control the modal
-
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
     };
-
-    const renderTabs = (
-        <CustomTabs
-            value={tabs.value}
-            onChange={tabs.onChange}
-            variant="fullWidth"
-            slotProps={{ tab: { px: 0 } }}
-            sx={{
-                fontWeight: 400,
-                borderRadius: 1,
-                marginBottom: 2,
-                '& .Mui-selected': {
-                    color: 'white',
-                },
-            }}
-        >
-            {TABS.map((tab) => (
-                <Tab key={tab.value} value={tab.value} label={tab.label} sx={{ fontWeight: 400 }} />
-            ))}
-        </CustomTabs>
-    );
 
     return (
         <Box
@@ -96,8 +42,8 @@ export default function CareerJobDetailsHero({ job }) {
             <Container>
                 <CustomBreadcrumbs
                     links={[
-                        { name: 'Home', href: '/' },
-                        { name: 'How it Works' },
+                        { name: trans('p_how_it_works_nav_home_text'), href: '/' },
+                        { name: trans('p_how_it_works_nav_text') },
                     ]}
                     sx={{
                         mb: { xs: 5, md: 8 },
@@ -114,9 +60,8 @@ export default function CareerJobDetailsHero({ job }) {
                 >
                     <Stack spacing={{ xs: 3, md: 2 }} sx={{ color: 'common.white' }}>
                         <Typography variant="h3" component="h1">
-                            {job.slug}
+                            {trans('p_how_it_works_hero_title')}
                         </Typography>
-
                     </Stack>
 
                     <Stack
@@ -126,10 +71,13 @@ export default function CareerJobDetailsHero({ job }) {
                         sx={{ width: 1, maxWidth: 340 }}
                     >
                         <Stack spacing={2} alignItems="center" sx={{ width: 1 }}>
-                            <Button fullWidth variant="contained" size="large" color="primary"
+                            <Button 
+                                fullWidth variant="contained" 
+                                size="large" 
+                                color="primary"
                                 onClick={handleClickOpen}
                             >
-                                Try it out. Get a quote.
+                                {trans('p_how_it_works_hero_button')}
                             </Button>
                         </Stack>
                     </Stack>
@@ -137,36 +85,11 @@ export default function CareerJobDetailsHero({ job }) {
                 </Stack>
             </Container>
 
-             {/* Modal Implementation */}
-             <AnimatePresence>
-                {open && (
-                    <Dialog
-                        fullWidth
-                        maxWidth="xs"
-                        open={open}
-                        onClose={handleClose}
-                        PaperComponent={(props) => (
-                            <m.div {...getVariant('fadeIn')}>
-                                <Paper {...props} />
-                            </m.div>
-                        )}
-                    >
-                        <DialogTitle>Express Courier Shipping</DialogTitle>
+            {/* Modal Implementation */}
+            {open && (
+                <GetQuoteModal isOpen={open} onClose={handleClose} />
+            )}
 
-                        <DialogContent>
-                            {renderTabs}
-                            <MarketingContactForm />
-                        </DialogContent>
-
-                        <DialogActions>
-                            <Button onClick={handleClose}>Cancel</Button>
-                            <Button variant="contained" onClick={handleClose} autoFocus>
-                                Get Quote
-                            </Button>
-                        </DialogActions>
-                    </Dialog>
-                )}
-            </AnimatePresence>
         </Box>
     );
 }
@@ -174,7 +97,6 @@ export default function CareerJobDetailsHero({ job }) {
 CareerJobDetailsHero.propTypes = {
     job: PropTypes.shape({
         slug: PropTypes.string,
-        favorited: PropTypes.bool,
         category: PropTypes.string,
         location: PropTypes.string,
         totalViews: PropTypes.number,

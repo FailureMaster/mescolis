@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import AppBar from '@mui/material/AppBar';
@@ -9,33 +8,26 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
-
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
-
 import { bgBlur } from 'src/theme/css';
 
 import Logo from 'src/components/logo_2';
-import Label from 'src/components/label';
-
-import { SignInButton } from 'src/components/sign-in-button';
 import { NavBasicDesktop } from 'src/components/nav-basic';
 import Iconify from 'src/components/iconify';
+import { useTranslation } from 'src/contexts/TranslationContext';
+
 import NavMobile from './nav/mobile';
-import NavDesktop from './nav/desktop';
+import { langs } from '../config-langs';
 import { HEADER } from '../config-layout';
-import Searchbar from '../common/searchbar';
-import { navConfig } from './config-navigation';
 import HeaderShadow from '../common/header-shadow';
-import SettingsButton from '../common/settings-button';
-
-
+import { LanguagePopover } from '../components/language-popover';
 
 // ----------------------------------------------------------------------
 
 export default function Header({ headerOnDark }) {
     const theme = useTheme();
+    const { trans, changeLanguage, language } = useTranslation(); // Access language here
 
     const offset = useOffSetTop();
 
@@ -64,16 +56,16 @@ export default function Header({ headerOnDark }) {
                             },
                         }}
                         data={[
-                            { title: 'Home', path: '/' },
+                            { title:  trans('home'), path: '/' },
                             {
-                                title: 'How It Works',
+                                title: trans('how_it_works'),
                                 icon: <Iconify icon="solar:home-2-bold-duotone" />,
                                 path: '/how-it-works',
                             },
-                            { title: 'Our Mission', path: '/our-mission' },
+                            { title: trans('our_mission'), path: '/our-mission' },
                             // { title: 'Our Partners', path: '/our-partners' },
                             {
-                                title: 'Couriers',
+                                title: trans('couriers'),
                                 path: '/couriers',
                                 icon: <Iconify icon="solar:file-bold-duotone" />,
                                 children: [
@@ -82,7 +74,7 @@ export default function Header({ headerOnDark }) {
                                     { title: 'Rest of the World', path: '/couriers/rest-of-the-world' },
                                 ],
                             },
-                            { title: 'FAQ', path: '/faq' },
+                            { title: trans('faq'), path: '/faq' },
                             // {
                             //     title: 'Resources',
                             //     path: '#',
@@ -96,20 +88,14 @@ export default function Header({ headerOnDark }) {
 
                         ]}
                     />
-                    {/* <NavDesktop
-                        slotProps={{
-                            rootItem: {
-                                '& .icon': { display: 'none' },
-                            },
-                        }}
-                        data={navConfig}
-                    /> */}
                 </Stack>
 
                 <Box sx={{ flexGrow: { xs: 1, md: 'unset' } }} />
             </>
 
             <Stack spacing={2} direction="row" alignItems="center" justifyContent="flex-end">
+
+                <LanguagePopover data={langs} currentlanguage={language} onSelectLanguage={changeLanguage} />
 
                 <Button
                     href='https://mesdash.wise-choice.net/'
@@ -119,7 +105,7 @@ export default function Header({ headerOnDark }) {
                         display: { xs: 'none', md: 'inline-flex' },
                     }}
                 >
-                    Sign in
+                    {trans('sign_in')}
                 </Button>
 
                 <Button
@@ -131,22 +117,22 @@ export default function Header({ headerOnDark }) {
                         display: { xs: 'none', md: 'inline-flex' },
                     }}
                 >
-                    Sign Up
+                    {trans('sign_up')}
                 </Button>
             </Stack>
 
             {!mdUp &&
                 <NavMobile
                     data={[
-                        { title: 'Home', path: '/' },
+                        { title: trans('home'), path: '/' },
                         {
-                            title: 'How It Works',
+                            title: trans('how_it_works'),
                             path: '/how-it-works',
                         },
-                        { title: 'Our Mission', path: '/our-mission' },
+                        { title: trans('our_mission'), path: '/our-mission' },
                         // { title: 'Our Partners', path: '/our-partners' },
                         {
-                            title: 'Couriers',
+                            title: trans('couriers'),
                             path: '/couriers',
                             children: [
                                 { title: 'Canada', path: '/couriers/ca' },
@@ -154,7 +140,7 @@ export default function Header({ headerOnDark }) {
                                 { title: 'Rest of the World', path: '/couriers/rest-of-the-world' },
                             ],
                         },
-                        { title: 'FAQ', path: '/faq' },
+                        { title: trans('faq'), path: '/faq' },
                     ]}
                 />
             }

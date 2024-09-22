@@ -9,10 +9,13 @@ import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import SvgColor from 'src/components/svg-color';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 // ----------------------------------------------------------------------
 
 export default function MarketingNewsletter({ sx, ...other }) {
+    const { trans } = useTranslation();
+
     return (
         <Box sx={{ py: 8, bgcolor: 'background.neutral', ...sx }} {...other}>
             <Container>
@@ -34,10 +37,10 @@ export default function MarketingNewsletter({ sx, ...other }) {
                         />
 
                         <Stack spacing={1}>
-                            <Typography variant="h4">Create a Free Account</Typography>
+                            <Typography variant="h4">{trans('footer_info_title')}</Typography>
 
                             <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                There are no hidden fees, no application forms, and no volume commitments.
+                                {trans('footer_info_description')}
                             </Typography>
                         </Stack>
                     </Stack>
@@ -45,7 +48,7 @@ export default function MarketingNewsletter({ sx, ...other }) {
                     <TextField
                         fullWidth
                         hiddenLabel
-                        placeholder="Enter your email"
+                        placeholder={trans('footer_info_button_placeholder')}
                         InputProps={{
                             endAdornment: (
                                 <InputAdornment position="end">
@@ -60,7 +63,7 @@ export default function MarketingNewsletter({ sx, ...other }) {
                                             borderBottomLeftRadius: 0,
                                         }}
                                     >
-                                        Sign Up
+                                        {trans('footer_info_button')}
                                     </Button>
                                 </InputAdornment>
                             ),

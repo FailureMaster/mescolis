@@ -8,7 +8,10 @@ import { useTheme } from '@mui/material/styles';
 import { useHoverParallax } from 'src/hooks/use-hover-parallax';
 
 import Image from 'src/components/image';
+import { useTranslation } from 'src/contexts/TranslationContext';
+
 import SvgColor from 'src/components/svg-color';
+
 
 import Icon from './pattern/icon';
 import Label from './pattern/label';
@@ -27,6 +30,8 @@ const stylesIcon = {
 // ----------------------------------------------------------------------
 
 function CareerHeroIllustration({ sx, ...other }) {
+    const { trans } = useTranslation();
+    
     const theme = useTheme();
 
     const { offsetX, offsetY, onMouseMoveHandler, onMouseLeaveHandler } = useHoverParallax();
@@ -36,6 +41,7 @@ function CareerHeroIllustration({ sx, ...other }) {
     const GREEN = theme.palette.success.main;
 
     const YELLOW = theme.palette.warning.main;
+    
 
     return (
         <Box
@@ -66,7 +72,7 @@ function CareerHeroIllustration({ sx, ...other }) {
                 >
                     <m.div style={{ y: offsetY(-50) }}>
                         <Label
-                            text="Standard"
+                            text={trans('home_hero_right_standard')}
                             icon={
                                 <Image
                                     alt="Standard Shipping"
@@ -89,7 +95,7 @@ function CareerHeroIllustration({ sx, ...other }) {
             >
                 <m.div style={{ x: offsetX(80), y: offsetY(80) }}>
                     <Label
-                        text="Express"
+                        text={trans('home_hero_right_express')}
                         icon={
                             <Image
                                 alt="Express Shipping"
@@ -110,7 +116,7 @@ function CareerHeroIllustration({ sx, ...other }) {
             >
                 <m.div style={{ y: offsetY(80) }}>
                     <Label
-                        text="Overnight"
+                        text={trans('home_hero_right_overnight')}
                         icon={
                             <Image
                                 alt="Overnight Shipping"
@@ -133,7 +139,7 @@ function CareerHeroIllustration({ sx, ...other }) {
             >
                 <m.div style={{ y: offsetY(-60) }}>
                     <Label
-                        text="International"
+                        text={trans('home_hero_right_international')}
                         icon={
                             <Image
                                 alt="International Shipping"

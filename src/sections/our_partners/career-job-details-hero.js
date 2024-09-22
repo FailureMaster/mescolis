@@ -2,33 +2,19 @@ import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
 
 import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { alpha, useTheme } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
-
-import { fDate } from 'src/utils/format-time';
-
 import { bgGradient } from 'src/theme/css';
 
-import Iconify from 'src/components/iconify';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
 
 export default function CareerJobDetailsHero({ job }) {
     const theme = useTheme();
-
-    const [favorite, setFavorite] = useState(job.favorited);
-
-    const handleChangeFavorite = useCallback((event) => {
-        setFavorite(event.target.checked);
-    }, []);
 
     return (
         <Box

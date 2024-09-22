@@ -1,70 +1,61 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
-import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { fShortenNumber } from 'src/utils/format-number';
-
-import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
-import { max } from 'date-fns';
-import { width } from '@mui/system';
+import { useTranslation } from 'src/contexts/TranslationContext';
+import { textGradient } from 'src/theme/styles';
 
-// ----------------------------------------------------------------------
-
-const BENEFITS = [
-    {
-        title: 'Reliable Shipping Solutions',
-        description: 'Experience fast and secure shipping with our delivery services, ensuring your packages arrive safely and on time.',
-        iconColor: 'primary',
-    },
-    {
-        title: 'International Logistics',
-        description: 'Simplify global trade with our international logistics solutions, offering seamless and efficient worldwide delivery.',
-        iconColor: 'secondary',
-    },
-    {
-        title: 'Customized Freight Services',
-        description: 'Get tailored freight services that fit your needs, with flexible options for air, sea, or land transport.',
-        iconColor: 'primary',
-    },
-    {
-        title: 'Eco-Friendly Transportation',
-        description: 'Choose our eco-friendly transportation options to reduce your carbon footprint with efficient and responsible delivery.',
-        iconColor: 'secondary',
-    },
-];
-
-
-const ROWS = [
-    {
-        label: 'Carrier List Rate',
-        total: 108.58,
-        content: 'Praesent turpis. Praesent blandit laoreet nibh. Nunc nonummy metus.',
-    },
-    {
-        label: 'With ShipTime',
-        total: 44.18,
-        content: 'Praesent turpis. Praesent blandit laoreet nibh. Nunc nonummy metus.',
-    },
-    // {
-    //     label: 'years of experience',
-    //     total: 20,
-    //     content: 'Praesent turpis. Praesent blandit laoreet nibh. Nunc nonummy metus.',
-    // },
-];
-
-// ----------------------------------------------------------------------
+import GetQuoteModal from 'src/components/get-quote/modal';
 
 export default function MarketingServicesBenefits() {
+    const { trans } = useTranslation();
+
     const mdUp = useResponsive('up', 'md');
+
+    const [open, setOpen] = useState(false); // State to control the modal
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    // ----------------------------------------------------------------------
+
+    const BENEFITS = [
+        {
+            title: trans('home_benefits_list_1'),
+            description: trans('home_benefits_list_1_description'),
+            iconColor: 'primary',
+        },
+        {
+            title: trans('home_benefits_list_2'),
+            description: trans('home_benefits_list_2_description'),
+            iconColor: 'secondary',
+        },
+        {
+            title: trans('home_benefits_list_3'),
+            description: trans('home_benefits_list_3_description'),
+            iconColor: 'primary',
+        },
+        {
+            title: trans('home_benefits_list_4'),
+            description: trans('home_benefits_list_4_description'),
+            iconColor: 'secondary',
+        },
+    ];
+
+    // ----------------------------------------------------------------------
 
     return (
         <Box
@@ -76,9 +67,16 @@ export default function MarketingServicesBenefits() {
             <Container>
 
                 <Typography variant="h2" sx={{ textAlign: 'center' }}>
-                    MesColis is
-                    <Box component="span" sx={{ color: 'primary.main' }}>
-                        {` Fast, Easy, and Free. `}
+                    {trans('home_benefits_title')}
+                    <Box
+                        component="span"
+                        sx={{
+                            ...textGradient(
+                                `90deg, #078DEE 20%, #FFA03F 100%`
+                            ),
+                        }}
+                    >
+                        {trans('home_benefits_title_highlight')}
                     </Box>
                 </Typography>
 
@@ -92,7 +90,7 @@ export default function MarketingServicesBenefits() {
                         mb: { xs: 8, md: 10 },
                     }}
                 >
-                    No Extra Fees. No Memberships. No Volume Commitments.
+                    {trans('home_benefits_subtitle')}
                 </Typography>
 
                 <Box
@@ -109,21 +107,9 @@ export default function MarketingServicesBenefits() {
                         ))}
                     </Stack>
 
-                    {/* {mdUp && <Image alt="benefits" src="/assets/illustrations/smart-delivery.svg" sx={{
-                        maxWidth: 480,
-                        width: '100%',
-                        margin: 'auto',
-                    }} />} */}
-
-                    {/* {mdUp && <Image alt="benefits" src="/assets/illustrations/mescolisrates.png" sx={{
-                        // maxWidth: 480,
-                        width: '100%',
-                        margin: 'auto',
-                    }} />} */}
-
                     {mdUp && <Stack spacing={1.5}>
                         <Typography variant="subtitle1" sx={{ mx: 'auto' }}>
-                            Toronto to Dallas, 1 LB
+                            {trans('home_benefits_location_sample_1')}
                         </Typography>
 
                         <Divider
@@ -133,7 +119,6 @@ export default function MarketingServicesBenefits() {
                         />
 
                         <Stack
-
                             direction="row"
                             alignItems="center"
                             divider={
@@ -156,7 +141,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    Carrier List Rate
+                                    {trans('home_benefits_carrier_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -175,7 +160,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    With MesColis
+                                    {trans('home_benefits_mescolis_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -184,12 +169,12 @@ export default function MarketingServicesBenefits() {
                         </Stack>
 
                         <Typography variant="caption" sx={{ mx: 'auto' }}>
-                            *as of February 23, 2024
+                            {trans('home_benefits_rate_date')}
                         </Typography>
 
 
                         <Typography variant="subtitle1" sx={{ mx: 'auto', mt: 4 }}>
-                            Montreal to Halifax, 6 LBS
+                            {trans('home_benefits_location_sample_2')}
                         </Typography>
 
                         <Divider
@@ -221,7 +206,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    Carrier List Rate
+                                    {trans('home_benefits_carrier_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -240,7 +225,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    With MesColis
+                                    {trans('home_benefits_mescolis_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -249,45 +234,11 @@ export default function MarketingServicesBenefits() {
                         </Stack>
 
                         <Typography variant="caption" sx={{ mx: 'auto' }}>
-                            *as of February 23, 2024
+                            {trans('home_benefits_rate_date')}
                         </Typography>
 
 
                     </Stack>}
-
-                    {/* <Stack spacing={5}>
-                        {ROWS.map((row) => (
-                            <Stack
-                                key={row.label}
-                                direction="row"
-                                alignItems="center"
-                                divider={
-                                    <Divider
-                                        flexItem
-                                        orientation="vertical"
-                                        sx={{ ml: 3, mr: 5, borderStyle: 'dashed' }}
-                                    />
-                                }
-                            >
-                                <Stack spacing={1} sx={{ width: 1, maxWidth: 100 }}>
-                                    <Stack direction="row">
-                                        <Typography variant="h2">{fShortenNumber(row.total)}</Typography>
-                                        <Box component="span" sx={{ color: 'primary.main', typography: 'h4' }}>
-                                            +
-                                        </Box>
-                                    </Stack>
-
-                                    <Typography variant="overline" sx={{ color: 'text.disabled' }}>
-                                        {row.label}
-                                    </Typography>
-                                </Stack>
-
-                                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    {row.content}
-                                </Typography>
-                            </Stack>
-                        ))}
-                    </Stack> */}
 
                     <Stack spacing={{ xs: 4, md: 10 }}>
                         {BENEFITS.slice(-2).map((benefit, index) => (
@@ -310,9 +261,9 @@ export default function MarketingServicesBenefits() {
                     }}
                 >
 
-                    <Grid md={6} >
+                    <Grid >
                         <Typography variant="subtitle1" sx={{ textAlign: 'center', pb: 1 }}>
-                            Toronto to Dallas, 1 LB
+                            {trans('home_benefits_location_sample_1')}
                         </Typography>
 
                         <Divider
@@ -345,7 +296,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    Carrier List Rate
+                                    {trans('home_benefits_carrier_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -365,7 +316,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    With MesColis
+                                    {trans('home_benefits_mescolis_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -375,16 +326,16 @@ export default function MarketingServicesBenefits() {
 
                         <Stack sx={{ pt: 2, pb: 2 }}>
                             <Typography variant="caption" sx={{ textAlign: 'center' }}>
-                                *as of February 23, 2024
+                                {trans('home_benefits_rate_date')}
                             </Typography>
                         </Stack>
 
 
                     </Grid>
 
-                    <Grid md={6} >
+                    <Grid >
                         <Typography variant="subtitle1" sx={{ textAlign: 'center', pb: 1 }}>
-                            Montreal to Halifax, 6 LBS
+                            {trans('home_benefits_location_sample_2')}
                         </Typography>
 
                         <Divider
@@ -417,7 +368,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    Carrier List Rate
+                                    {trans('home_benefits_carrier_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -437,7 +388,7 @@ export default function MarketingServicesBenefits() {
                                     </Box>
                                 </Stack>
                                 <Typography variant="subtitle2" sx={{ color: '' }}>
-                                    With MesColis
+                                    {trans('home_benefits_mescolis_text')}
                                 </Typography>
                                 <Stack direction="row" alignItems="center" sx={{ typography: 'subtitle2', mx: 'auto' }}>
                                     <Iconify icon="carbon:currency" width={24} sx={{ color: 'primary.main' }} />
@@ -447,7 +398,7 @@ export default function MarketingServicesBenefits() {
 
                         <Stack sx={{ pt: 2, pb: 2 }}>
                             <Typography variant="caption" sx={{ textAlign: 'center' }}>
-                                *as of February 23, 2024
+                                {trans('home_benefits_rate_date')}
                             </Typography>
                         </Stack>
 
@@ -463,11 +414,17 @@ export default function MarketingServicesBenefits() {
                         size="large"
                         variant="outlined"
                         sx={{ mt: 5 }}
+                        onClick={handleClickOpen}
                     >
-                        Try your first quote
+                        {trans('home_benefits_button')}
                     </Button>
                 </Stack>
             </Container>
+
+            {/* Modal Implementation */}
+            {open && (
+                <GetQuoteModal isOpen={open} onClose={handleClose} />
+            )}
         </Box>
     );
 }
@@ -509,7 +466,6 @@ function BenefitItem({ benefit, reverse, index }) {
                     }),
                 }}
             />
-
             <Stack spacing={1}>
                 <Typography variant="h4">
                     {title}

@@ -5,9 +5,7 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
 
 import { paths } from 'src/routes/paths';
 import { RouterLink } from 'src/routes/components';
@@ -15,12 +13,14 @@ import { RouterLink } from 'src/routes/components';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import Iconify from 'src/components/iconify';
-import TextMaxLine from 'src/components/text-max-line';
 import Image from 'src/components/image';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 // ----------------------------------------------------------------------
 
 export default function TravelLandingToursByCity({ tours }) {
+    const { trans } = useTranslation();
+
     const mdUp = useResponsive('up', 'md');
 
     const viewAllBtn = (
@@ -30,7 +30,7 @@ export default function TravelLandingToursByCity({ tours }) {
             color="inherit"
             endIcon={<Iconify icon="carbon:chevron-right" />}
         >
-            View All
+            {trans('p_couriers_view_all_button')}
         </Button>
     );
 
@@ -73,7 +73,7 @@ TravelLandingToursByCity.propTypes = {
 // ----------------------------------------------------------------------
 
 function TourItem({ tour }) {
-    const { coverUrl2, location } = tour;
+    const { coverUrl2 } = tour;
 
     return (
         <Link component={RouterLink} href='' color="inherit" underline="none">
@@ -92,14 +92,8 @@ function TourItem({ tour }) {
             >
                 <Stack direction="row" alignItems="center" spacing={2.5}>
 
-                    <Image src={coverUrl2} sx={{ width: '100%', height: 64 }} />
+                    <Image src={coverUrl2} sx={{ width: '100%', height: 64, mx: 'auto' }} />
 
-                    {/* <Stack spacing={0.5}>
-                        <TextMaxLine variant="h6" line={1}>
-                            {location}
-                        </TextMaxLine>
-
-                    </Stack> */}
                 </Stack>
             </Paper>
         </Link>
@@ -110,6 +104,5 @@ TourItem.propTypes = {
     tour: PropTypes.shape({
         coverUrl: PropTypes.string,
         coverUrl2: PropTypes.string,
-        location: PropTypes.string,
     }),
 };

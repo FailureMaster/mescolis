@@ -1,41 +1,28 @@
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { useBoolean } from 'src/hooks/use-boolean';
-import { _tours, _mock } from 'src/_mock';
+import { _mock } from 'src/_mock';
 
-import { fShortenNumber } from 'src/utils/format-number';
 import { textGradient } from 'src/theme/styles';
 import Image from 'src/components/image';
-import CountUp from 'src/components/count-up';
+import { useTranslation } from 'src/contexts/TranslationContext';
+
 import TravelFilters from './travel-filters';
-import TravelTourList from './travel-tour-list';
 
 // ----------------------------------------------------------------------
 
 const IMAGES = [...Array(4)].map((_, index) => _mock.image.travel(index + 2));
 
-const SUMMARY = [
-    { name: 'Air tickets sold', number: 130 },
-    { name: 'Tours booked', number: 196 },
-    { name: 'Site visitors', number: 10679 },
-    { name: 'Verified hotels', number: 877 },
-];
-
 // ----------------------------------------------------------------------
 
 export default function TravelAbout() {
+    const { trans } = useTranslation();
+
     const smUp = useResponsive('up', 'sm');
-
-    const theme = useTheme();
-
-    const loading = useBoolean(true);
 
     return (
         <Container
@@ -46,7 +33,7 @@ export default function TravelAbout() {
         >
             <Box sx={{ textAlign: 'center', mb: 6 }}>
                 <Typography variant="h3" sx={{ mb: 3 }}>
-                    ShipTime Works With
+                    {trans('p_couriers_title_1')}
                     <Box
                         component="span"
                         sx={{
@@ -55,12 +42,12 @@ export default function TravelAbout() {
                             ),
                         }}
                     >
-                        &nbsp;The Best&nbsp;
+                        {trans('p_couriers_title_2')}
                     </Box>
-                    Carriers
+                    {trans('p_couriers_title_3')}
                 </Typography>
                 <Typography variant="h4" sx={{ mx: 'auto', color: 'text.secondary' }}>
-                    Compare the top shipping couriers and save up to 76% every time you ship.
+                    {trans('p_couriers_description')}
                 </Typography>
             </Box>
 
@@ -78,9 +65,6 @@ export default function TravelAbout() {
                     mb: 3
                 }}
             />
-
-            {/* <TravelTourList tours={_tours} loading={loading.value} /> */}
-
         </Container>
     );
 }

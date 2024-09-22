@@ -5,11 +5,10 @@ import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
 import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-
 import Image from 'src/components/image';
-import Carousel, { useCarousel } from 'src/components/carousel';
 import Divider from '@mui/material/Divider';
+import Carousel, { useCarousel } from 'src/components/carousel';
+
 
 // ----------------------------------------------------------------------
 

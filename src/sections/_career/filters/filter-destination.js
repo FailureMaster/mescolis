@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-
 import { countries } from 'src/assets/data';
-
 import CountrySelect from 'src/components/country-select';
+import { trans } from 'src/services/TranslationService';
 
 // ----------------------------------------------------------------------
 
@@ -11,7 +10,7 @@ export default function FilterLocation({ filterLocation, onChangeLocation, sx })
     <CountrySelect
       fullWidth
       hiddenLabel
-      placeholder="Destination"
+      placeholder={trans('home_form_destination')}
       value={filterLocation}
       onChange={(event, newValue) => onChangeLocation(newValue)}
       options={countries.map((option) => option.label)}

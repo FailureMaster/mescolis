@@ -7,6 +7,8 @@ import Footer from './footer';
 import { HEADER } from '../config-layout';
 import FooterInfo from '../footer-info';
 
+import { TranslationProvider } from '../../contexts/TranslationContext';
+
 // ----------------------------------------------------------------------
 
 export default function MainLayout({
@@ -17,32 +19,34 @@ export default function MainLayout({
     ...other
 }) {
     return (
-        <Box
-            sx={{
-                height: 1,
-                display: 'flex',
-                flexDirection: 'column',
-                ...sx,
-            }}
-            {...other}
-        >
-            <Header headerOnDark={headerOnDark} />
+        <TranslationProvider>
+            <Box
+                sx={{
+                    height: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    ...sx,
+                }}
+                {...other}
+            >
+                <Header headerOnDark={headerOnDark} />
 
-            <Box component="main" sx={{ flexGrow: 1 }}>
-                {!(disabledSpacing || headerOnDark) && (
-                    <Box
-                        sx={{
-                            height: { xs: HEADER.H_MOBILE, md: HEADER.H_DESKTOP },
-                        }}
-                    />
-                )}
+                <Box component="main" sx={{ flexGrow: 1 }}>
+                    {!(disabledSpacing || headerOnDark) && (
+                        <Box
+                            sx={{
+                                height: { xs: HEADER.H_MOBILE, md: HEADER.H_DESKTOP },
+                            }}
+                        />
+                    )}
 
-                {children}
+                    {children}
+                </Box>
+
+                <FooterInfo />
+                <Footer />
             </Box>
-
-            <FooterInfo />
-            <Footer />
-        </Box>
+        </TranslationProvider>
     );
 }
 

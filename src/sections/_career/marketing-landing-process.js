@@ -7,40 +7,42 @@ import { alpha } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import SvgColor from 'src/components/svg-color';
 import Image from 'src/components/image';
-
+import { useTranslation } from 'src/contexts/TranslationContext';
+import { textGradient } from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
 
 const COLORS = ['primary', 'secondary', 'warning', 'success'];
 
-const SERVICES = [
-    {
-        name: 'Describe Your Shipment',
-        description: 'Our smart address lookup tool makes entering addresses easy. ',
-        icon: '/assets/icons/steps/step1.svg',
-    },
-    {
-        name: 'Compare & Select Rates',
-        description: 'See the rates available from trusted couriers for your specific shipment details.',
-        icon: '/assets/icons/steps/step2.svg',
-    },
-    {
-        name: 'Select Pickup or Drop Off',
-        description: 'Easily schedule pickups during processing. Manage your pickups with My Pickups.',
-        icon: '/assets/icons/steps/step3.svg',
-    },
-    {
-        name: 'Print & Attach Your Label',
-        description: 'We generates your label and commercial invoice you need to attach to your shipment.',
-        icon: '/assets/icons/steps/step4.svg',
-    },
-];
-
-// ----------------------------------------------------------------------
-
 export default function MarketingLandingProcess() {
+    const { trans } = useTranslation();
+
+    const SERVICES = [
+        {
+            name: trans('home_process_step_1'),
+            description: trans('home_process_step_1_description'),
+            icon: '/assets/icons/steps/step1.svg',
+        },
+        {
+            name: trans('home_process_step_2'),
+            description: trans('home_process_step_2_description'),
+            icon: '/assets/icons/steps/step2.svg',
+        },
+        {
+            name: trans('home_process_step_3'),
+            description: trans('home_process_step_3_description'),
+            icon: '/assets/icons/steps/step3.svg',
+        },
+        {
+            name: trans('home_process_step_4'),
+            description: trans('home_process_step_4_description'),
+            icon: '/assets/icons/steps/step4.svg',
+        },
+    ];
+
+    // ----------------------------------------------------------------------
+
     return (
         <Container
             sx={{
@@ -57,16 +59,23 @@ export default function MarketingLandingProcess() {
                 }}
             >
                 <Typography variant="overline" sx={{ color: 'text.disabled' }}>
-                    Ship Packages and Envelopes in One Minute Flat.
+                    {trans('home_process_subtitle')}
                 </Typography>
                 <Typography variant="h2" sx={{ mb: 3 }}>
-                    Working
-                    <Box component="span" sx={{ color: 'primary.main' }}>
-                        {` Process `}
+                    {trans('home_process_title')}
+                    <Box
+                        component="span"
+                        sx={{
+                            ...textGradient(
+                                `90deg, #078DEE 20%, #FFA03F 100%`
+                            ),
+                        }}
+                    >
+                        {trans('home_process_title_highlight')}
                     </Box>
                 </Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
-                    Thanks to Mescolis simple yet powerful interface, you’ll find you can process shipments in as little as one minute with the most trusted couriers.
+                    {trans('home_process_description')}
                 </Typography>
             </Stack>
 
