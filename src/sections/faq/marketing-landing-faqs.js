@@ -11,11 +11,10 @@ import AccordionSummary, { accordionSummaryClasses } from '@mui/material/Accordi
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import { _mock } from 'src/_mock';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
-import { useTranslation } from 'src/contexts/TranslationContext';
-import { tr } from 'date-fns/locale';
 
 // ----------------------------------------------------------------------
 

@@ -1,15 +1,14 @@
 import { memo } from 'react';
 import { m } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { useTheme } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 import { useHoverParallax } from 'src/hooks/use-hover-parallax';
 
-import Icon from './icon2';
 import Dot from './dots';
+import Icon from './icon2';
 import Circle from './circle';
 
 // ----------------------------------------------------------------------
@@ -75,8 +74,6 @@ const buttonStyles = {
 
 
 function Pattern02({ sx, ...other }) {
-
-    const theme = useTheme();
 
     const { offsetX, offsetY } = useHoverParallax();
 

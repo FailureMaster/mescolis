@@ -1,6 +1,6 @@
-import { RHFTextField } from 'src/components/hook-form';
-
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import { RHFTextField } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------
 

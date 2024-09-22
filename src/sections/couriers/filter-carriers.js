@@ -1,9 +1,9 @@
-import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-
-import { RHFSelect } from 'src/components/hook-form';
+import MenuItem from '@mui/material/MenuItem';
 
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import { RHFSelect } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------
 

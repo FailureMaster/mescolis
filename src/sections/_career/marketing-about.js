@@ -7,12 +7,12 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
+import { textGradient } from 'src/theme/styles';
+import { useTranslation } from 'src/contexts/TranslationContext';
+
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
-import { useTranslation } from 'src/contexts/TranslationContext';
-import { textGradient } from 'src/theme/styles';
-
-import GetQuoteModal from 'src/components/get-quote/modal';
+import GetQuoteModal from 'src/components/get-quote-modal/modal';
 
 export default function MarketingAbout() {
     const { trans } = useTranslation();

@@ -10,12 +10,13 @@ import { useTheme } from '@mui/material/styles';
 
 import { useOffSetTop } from 'src/hooks/use-off-set-top';
 import { useResponsive } from 'src/hooks/use-responsive';
+
 import { bgBlur } from 'src/theme/css';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 import Logo from 'src/components/logo_2';
-import { NavBasicDesktop } from 'src/components/nav-basic';
 import Iconify from 'src/components/iconify';
-import { useTranslation } from 'src/contexts/TranslationContext';
+import { NavBasicDesktop } from 'src/components/nav-basic';
 
 import NavMobile from './nav/mobile';
 import { langs } from '../config-langs';

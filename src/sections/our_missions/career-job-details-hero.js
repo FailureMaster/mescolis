@@ -1,19 +1,18 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import { alpha, useTheme } from '@mui/material/styles';
 
 import { bgGradient } from 'src/theme/css';
-
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 import { useTranslation } from 'src/contexts/TranslationContext';
 
-import GetQuoteModal from 'src/components/get-quote/modal';
+import GetQuoteModal from 'src/components/get-quote-modal/modal';
+import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 // ----------------------------------------------------------------------
 

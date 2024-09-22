@@ -4,9 +4,8 @@ import Box from '@mui/material/Box';
 
 import Header from './header';
 import Footer from './footer';
-import { HEADER } from '../config-layout';
 import FooterInfo from '../footer-info';
-
+import { HEADER } from '../config-layout';
 import { TranslationProvider } from '../../contexts/TranslationContext';
 
 // ----------------------------------------------------------------------

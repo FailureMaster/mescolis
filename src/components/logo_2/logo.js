@@ -1,16 +1,14 @@
-import { memo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { memo, useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import { useTheme } from '@mui/material/styles';
 
 import { RouterLink } from 'src/routes/components';
 
 // ----------------------------------------------------------------------
 
 function Logo({ single = false, isScrolled = false, sx }) {
-  const theme = useTheme();
   const [isHomePage, setIsHomePage] = useState(false);
 
   useEffect(() => {
@@ -19,8 +17,6 @@ function Logo({ single = false, isScrolled = false, sx }) {
       setIsHomePage(window.location.pathname === '/');
     }
   }, []);
-
-  const PRIMARY_MAIN = theme.palette.primary.main;
 
   // Conditionally set logo based on whether on the homepage or not
   const logoSrc = isHomePage && !isScrolled

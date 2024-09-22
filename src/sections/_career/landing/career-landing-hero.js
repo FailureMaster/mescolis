@@ -1,24 +1,21 @@
-import { useState, useCallback } from 'react';
-
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-
 import { alpha, useTheme } from '@mui/material/styles';
+
+import { useTabs } from 'src/hooks/use-tabs';
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { _brands } from 'src/_mock';
 import { bgGradient } from 'src/theme/css';
+import { textGradient } from 'src/theme/styles';
+import { useTranslation } from 'src/contexts/TranslationContext';
 import CareerHeroIllustration from 'src/assets/illustrations/career-hero-illustration';
 
 import { CustomTabs } from 'src/components/custom-tabs';
-import { useTranslation } from 'src/contexts/TranslationContext';
 
-import { useTabs } from 'src/hooks/use-tabs';
-import { textGradient } from 'src/theme/styles';
 import MarketingContactForm from './marketing-contact-form';
 
 // ----------------------------------------------------------------------
@@ -35,12 +32,6 @@ export default function CareerLandingHero() {
         { value: 'envelope', label: trans('home_hero_tab_envelope') },
         { value: 'ltl_freight', label: trans('home_hero_tab_ltl_freight') },
     ];
-
-    const [filters, setFilters] = useState({
-        filterKeyword: null,
-        filterLocation: null,
-        filterLocation2: null,
-    });
 
     const renderFilters = (
         <Stack

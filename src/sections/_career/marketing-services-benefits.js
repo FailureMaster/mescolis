@@ -2,8 +2,8 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import Grid from '@mui/material/Grid';
+import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Container from '@mui/material/Container';
@@ -11,11 +11,11 @@ import Typography from '@mui/material/Typography';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import Iconify from 'src/components/iconify';
-import { useTranslation } from 'src/contexts/TranslationContext';
 import { textGradient } from 'src/theme/styles';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
-import GetQuoteModal from 'src/components/get-quote/modal';
+import Iconify from 'src/components/iconify';
+import GetQuoteModal from 'src/components/get-quote-modal/modal';
 
 export default function MarketingServicesBenefits() {
     const { trans } = useTranslation();

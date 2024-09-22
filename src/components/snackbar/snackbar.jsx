@@ -3,6 +3,7 @@
 import Portal from '@mui/material/Portal';
 
 import Iconify from 'src/components/iconify';
+
 import { StyledToaster } from './styles';
 import { toasterClasses } from './classes';
 

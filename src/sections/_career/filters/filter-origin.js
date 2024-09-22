@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
 import { countries } from 'src/assets/data';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 import CountrySelect from 'src/components/country-select';
-import { useTranslation } from 'src/contexts/TranslationContext';
 
 // ----------------------------------------------------------------------
 

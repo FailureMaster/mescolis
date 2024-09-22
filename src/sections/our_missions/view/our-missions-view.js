@@ -2,12 +2,14 @@
 
 import { useEffect } from 'react';
 
+import { useBoolean } from 'src/hooks/use-boolean';
+
 import { _jobs, } from 'src/_mock';
 
-import { useBoolean } from 'src/hooks/use-boolean';
 import { SplashScreen } from 'src/components/loading-screen';
-import CareerJobDetailsHero from '../career-job-details-hero';
+
 import ElearningAbout from '../elearning-about';
+import CareerJobDetailsHero from '../career-job-details-hero';
 
 // ----------------------------------------------------------------------
 

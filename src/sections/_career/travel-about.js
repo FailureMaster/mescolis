@@ -1,13 +1,9 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
-
-import { styled } from '@mui/material/styles';
-
-import { _mock } from 'src/_mock';
-
 import Button, { buttonClasses } from '@mui/material/Button';
 
 import Image from 'src/components/image';

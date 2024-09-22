@@ -1,14 +1,16 @@
+import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
 
 import Popover from '@mui/material/Popover';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
-import PropTypes from 'prop-types';
+
 import { usePopover } from 'src/hooks/use-popover';
 
-import { FlagIcon } from 'src/components/iconify';
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import { FlagIcon } from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 

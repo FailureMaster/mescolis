@@ -1,14 +1,16 @@
 'use client';
 
 import { useEffect } from 'react';
+
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
 import { useBoolean } from 'src/hooks/use-boolean';
-import { useResponsive } from 'src/hooks/use-responsive';
 
 import { _jobs } from 'src/_mock';
+
 import { SplashScreen } from 'src/components/loading-screen';
+
 import MarketingAboutStory from '../marketing-about-story';
 import CareerJobDetailsHero from '../career-job-details-hero';
 

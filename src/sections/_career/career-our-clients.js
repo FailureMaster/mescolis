@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
 import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
+
 import Image from 'src/components/image';
-import Divider from '@mui/material/Divider';
 import Carousel, { useCarousel } from 'src/components/carousel';
 
 

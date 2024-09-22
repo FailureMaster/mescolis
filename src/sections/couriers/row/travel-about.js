@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import { useResponsive } from 'src/hooks/use-responsive';
 
 import { _mock } from 'src/_mock';
-
 import { textGradient } from 'src/theme/styles';
-import Image from 'src/components/image';
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import Image from 'src/components/image';
 
 import TravelFilters from './travel-filters';
 

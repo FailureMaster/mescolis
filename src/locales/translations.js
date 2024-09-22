@@ -1,4 +1,3 @@
-import { get } from "react-hook-form";
 
 export const translations = {
     en: {

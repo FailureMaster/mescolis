@@ -1,9 +1,12 @@
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Image from 'src/components/image';
-import { useTranslation } from 'src/contexts/TranslationContext';
+
 import { textGradient } from 'src/theme/styles';
+import { useTranslation } from 'src/contexts/TranslationContext';
+
+import Image from 'src/components/image';
+
 // ----------------------------------------------------------------------
 
 export default function CareerLandingStep() {

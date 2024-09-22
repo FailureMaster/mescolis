@@ -8,8 +8,9 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import SvgColor from 'src/components/svg-color';
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import SvgColor from 'src/components/svg-color';
 
 // ----------------------------------------------------------------------
 

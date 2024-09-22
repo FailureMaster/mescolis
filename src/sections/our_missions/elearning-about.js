@@ -2,8 +2,9 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import Image from 'src/components/image';
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import Image from 'src/components/image';
 
 // ----------------------------------------------------------------------
 

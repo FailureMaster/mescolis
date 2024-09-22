@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Timeline from '@mui/lab/Timeline';
+import Button from '@mui/material/Button';
 import TimelineDot from '@mui/lab/TimelineDot';
 import Container from '@mui/material/Container';
 import TimelineItem from '@mui/lab/TimelineItem';
@@ -13,8 +13,9 @@ import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import Image from 'src/components/image';
 import { useTranslation } from 'src/contexts/TranslationContext';
+
+import Image from 'src/components/image';
 
 // ----------------------------------------------------------------------
 
@@ -108,7 +109,7 @@ export default function MarketingAboutStory() {
                                         />
                                     )}
                                     {value.year !== trans('p_how_it_works_step_3_subtitle') && value.year !== trans('p_how_it_works_step_5_subtitle') && (
-                                        <></>
+                                       <Typography />
                                     )}
                                 </TimelineOppositeContent>
                             )}
@@ -178,7 +179,7 @@ export default function MarketingAboutStory() {
                                             />
                                         )}
                                         {value.year !== trans('p_how_it_works_step_2_subtitle') && value.year !== trans('p_how_it_works_step_4_subtitle') && (
-                                            <></>
+                                           <Typography />
                                         )}
                                     </Typography>
                                 )}

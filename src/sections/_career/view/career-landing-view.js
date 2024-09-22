@@ -8,10 +8,10 @@ import {
 
 import ScrollProgress from 'src/components/scroll-progress';
 
+import MarketingAbout from '../marketing-about';
 import CareerOurClients from '../career-our-clients';
 import CareerLandingHero from '../landing/career-landing-hero';
 import CareerLandingStep from '../landing/career-landing-step';
-import MarketingAbout from '../marketing-about';
 import MarketingLandingProcess from '../marketing-landing-process';
 import MarketingServicesBenefits from '../marketing-services-benefits';
 

@@ -1,7 +1,8 @@
 'use client';
 
-import { useContext, createContext, useState, useMemo  } from 'react';
 import PropTypes from 'prop-types';
+import { useMemo, useState, useContext, createContext  } from 'react';
+
 import { translations } from '../locales/translations';
 import { setLanguage as setGlobalLanguage } from '../services/TranslationService'; // Import the service
 

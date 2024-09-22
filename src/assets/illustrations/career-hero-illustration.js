@@ -7,11 +7,10 @@ import { useTheme } from '@mui/material/styles';
 
 import { useHoverParallax } from 'src/hooks/use-hover-parallax';
 
-import Image from 'src/components/image';
 import { useTranslation } from 'src/contexts/TranslationContext';
 
+import Image from 'src/components/image';
 import SvgColor from 'src/components/svg-color';
-
 
 import Icon from './pattern/icon';
 import Label from './pattern/label';

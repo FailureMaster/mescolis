@@ -4,18 +4,18 @@ import { useState, useCallback } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Stack from '@mui/material/Stack';
-import LoadingButton from '@mui/lab/LoadingButton';
 
 import { useTranslation } from 'src/contexts/TranslationContext';
 
 import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-import FilterOrigin from '../filters/filter-origin';
-import FilterDestination from '../filters/filter-destination';
+import FilterOrigin from './filters/filter-origin';
+import FilterDestination from './filters/filter-destination';
 
 // ----------------------------------------------------------------------
 
-export default function MarketingContactForm() {
+export default function GetQuoteModalForm() {
+
     const { trans } = useTranslation();
 
     const MarketingContactSchema = Yup.object().shape({
@@ -71,7 +71,6 @@ export default function MarketingContactForm() {
     const {
         reset,
         handleSubmit,
-        formState: { isSubmitting },
     } = methods;
 
     const onSubmit = handleSubmit(async (data) => {
@@ -92,7 +91,7 @@ export default function MarketingContactForm() {
                 <Stack
                     spacing={{ xs: 2.5, md: 2 }}
                     direction={{ xs: 'row', md: 'row' }}
-                    sx={{ width: 1, marginTop: 2 }}
+                    sx={{ width: 1}}
                 >
                     <FilterOrigin
                         filterLocation={filters.filterLocation}
@@ -103,7 +102,7 @@ export default function MarketingContactForm() {
                     />
                     <RHFTextField
                         name="origin_postal_code"
-                        label={trans('home_form_origin_postal_code')} 
+                        label={trans('get_a_quote_modal_form_origin_postal_code')}
                         sx={{ flex: 0.35 }}
                     />
                 </Stack>
@@ -120,7 +119,11 @@ export default function MarketingContactForm() {
                             flex: 0.65,
                         }}
                     />
-                    <RHFTextField name="destination_postal_code" label={trans('home_form_destination_postal_code')} sx={{ flex: 0.35 }} />
+                    <RHFTextField 
+                        name="destination_postal_code" 
+                        label={trans('get_a_quote_modal_form_destination_postal_code')}
+                        sx={{ flex: 0.35 }} 
+                    />
                 </Stack>
 
                 <Stack
@@ -128,26 +131,13 @@ export default function MarketingContactForm() {
                     direction={{ xs: 'row', md: 'row' }}
                     sx={{ width: 1, marginTop: 2 }}
                 >
-                    <RHFTextField name="dimension_width" label={trans('home_form_width')}  />
-                    <RHFTextField name="dimension_length" label={trans('home_form_length')} />
-                    <RHFTextField name="dimension_height" label={trans('home_form_height')} />
+                    <RHFTextField name="dimension_width" label={trans('get_a_quote_modal_form_width')} />
+                    <RHFTextField name="dimension_length" label={trans('get_a_quote_modal_form_length')} />
+                    <RHFTextField name="dimension_height" label={trans('get_a_quote_modal_form_height')} />
 
-                    <RHFTextField name="weight" label={trans('home_form_weight')} />
+                    <RHFTextField name="weight" label={trans('get_a_quote_modal_form_weight')} />
                 </Stack>
-
-
             </Stack>
-
-            <LoadingButton
-                size="medium"
-                color="inherit"
-                type="submit"
-                variant="contained"
-                loading={isSubmitting}
-                sx={{ mt: 3, mb: 1 }}
-            >
-                {trans('home_form_get_quote')}
-            </LoadingButton>
         </FormProvider>
     );
 }

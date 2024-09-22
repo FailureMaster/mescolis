@@ -8,8 +8,8 @@ import { _jobs } from 'src/_mock';
 
 import { SplashScreen } from 'src/components/loading-screen';
 
-import CareerJobDetailsHero from '../career-job-details-hero';
 import MarketingLandingFaqs from '../marketing-landing-faqs';
+import CareerJobDetailsHero from '../career-job-details-hero';
 
 // ----------------------------------------------------------------------
 
