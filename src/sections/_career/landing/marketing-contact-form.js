@@ -1,29 +1,23 @@
 import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
 import { useState, useCallback } from 'react';
-
-import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
 import LoadingButton from '@mui/lab/LoadingButton';
-import FormHelperText from '@mui/material/FormHelperText';
-import ToggleButton, { toggleButtonClasses } from '@mui/material/ToggleButton';
-import { filledInputClasses } from '@mui/material/FilledInput';
 
-import { fCurrency } from 'src/utils/format-number';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
-import { _tags } from 'src/_mock';
+import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-import FormProvider, { RHFSlider, RHFTextField } from 'src/components/hook-form';
-
-import FilterKeyword from '../filters/filter-keyword';
 import FilterOrigin from '../filters/filter-origin';
 import FilterDestination from '../filters/filter-destination';
 
 // ----------------------------------------------------------------------
 
 export default function MarketingContactForm() {
+    const { trans } = useTranslation();
+
     const MarketingContactSchema = Yup.object().shape({
         services: Yup.array().required().min(1, 'Services field must have at least 1 items'),
         email: Yup.string().required('Email is required').email('That is not an email'),
@@ -48,16 +42,6 @@ export default function MarketingContactForm() {
         filterLocation: null,
         filterLocation2: null,
     });
-
-    const handleChangeKeyword = useCallback(
-        (newValue) => {
-            setFilters({
-                ...filters,
-                filterKeyword: newValue,
-            });
-        },
-        [filters]
-    );
 
     const handleChangeLocation = useCallback(
         (newValue) => {
@@ -86,7 +70,6 @@ export default function MarketingContactForm() {
 
     const {
         reset,
-        control,
         handleSubmit,
         formState: { isSubmitting },
     } = methods;
@@ -100,11 +83,6 @@ export default function MarketingContactForm() {
             console.error(error);
         }
     });
-
-    const getSelected = (selectedItems, item) =>
-        selectedItems.includes(item)
-            ? selectedItems.filter((value) => value !== item)
-            : [...selectedItems, item];
 
     return (
         <FormProvider methods={methods} onSubmit={onSubmit}>
@@ -125,7 +103,7 @@ export default function MarketingContactForm() {
                     />
                     <RHFTextField
                         name="origin_postal_code"
-                        label="Postal Code"
+                        label={trans('home_form_origin_postal_code')} 
                         sx={{ flex: 0.35 }}
                     />
                 </Stack>
@@ -142,7 +120,7 @@ export default function MarketingContactForm() {
                             flex: 0.65,
                         }}
                     />
-                    <RHFTextField name="destination_postal_code" label="Postal Code" sx={{ flex: 0.35 }} />
+                    <RHFTextField name="destination_postal_code" label={trans('home_form_destination_postal_code')} sx={{ flex: 0.35 }} />
                 </Stack>
 
                 <Stack
@@ -150,11 +128,11 @@ export default function MarketingContactForm() {
                     direction={{ xs: 'row', md: 'row' }}
                     sx={{ width: 1, marginTop: 2 }}
                 >
-                    <RHFTextField name="dimension_width" label="Width" />
-                    <RHFTextField name="dimension_length" label="Length" />
-                    <RHFTextField name="dimension_height" label="Height" />
+                    <RHFTextField name="dimension_width" label={trans('home_form_width')}  />
+                    <RHFTextField name="dimension_length" label={trans('home_form_length')} />
+                    <RHFTextField name="dimension_height" label={trans('home_form_height')} />
 
-                    <RHFTextField name="weight" label="Weight" />
+                    <RHFTextField name="weight" label={trans('home_form_weight')} />
                 </Stack>
 
 
@@ -168,7 +146,7 @@ export default function MarketingContactForm() {
                 loading={isSubmitting}
                 sx={{ mt: 3, mb: 1 }}
             >
-                Get Quote
+                {trans('home_form_get_quote')}
             </LoadingButton>
         </FormProvider>
     );

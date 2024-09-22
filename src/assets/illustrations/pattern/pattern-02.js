@@ -4,46 +4,14 @@ import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { useTheme } from '@mui/material/styles';
 
 import { useHoverParallax } from 'src/hooks/use-hover-parallax';
 
-import Image from 'src/components/image';
-import SvgColor from 'src/components/svg-color';
-
-import Icon from './icon2';
-import Label from './label';
-import Shape from './shape';
 import Dot from './dots';
+import Icon from './icon2';
 import Circle from './circle';
 
 // ----------------------------------------------------------------------
-
-const stylesIcon = {
-    width: 40,
-    height: 40,
-    color: 'common.black',
-};
-
-const varUp = {
-    animate: { y: [-8, 8, -8], x: [-4, 4, -4] },
-    transition: { duration: 8, repeat: Infinity },
-};
-
-const varDown = {
-    animate: { y: [8, -8, 8], x: [4, -4, 4] },
-    transition: { duration: 8, repeat: Infinity },
-};
-
-const varLeft = {
-    animate: { x: [8, -8, 8], y: [4, -4, 4] },
-    transition: { duration: 7, repeat: Infinity },
-};
-
-const varRight = {
-    animate: { x: [8, -8, 8], y: [4, -4, 4] },
-    transition: { duration: 7, repeat: Infinity },
-};
 
 // ----------------------------------------------------------------------
 
@@ -104,31 +72,12 @@ const buttonStyles = {
     overflow: 'hidden',
 };
 
-// Define the keyframes for the glow animation
-const keyframes = `
-    @keyframes glow-container {
-        0% { background-position: 0% 0%; }
-        50% { background-position: 100% 0%; }
-        100% { background-position: 0% 0%; }
-    }
-`;
-
 
 function Pattern02({ sx, ...other }) {
 
-    const theme = useTheme();
-
-    const { offsetX, offsetY, onMouseMoveHandler, onMouseLeaveHandler } = useHoverParallax();
+    const { offsetX, offsetY } = useHoverParallax();
 
     const WHITE = '#FFFFFF';
-
-    const GREEN = theme.palette.success.main;
-
-    const YELLOW = theme.palette.warning.main;
-
-    const BLUE = '#355EC9';
-
-    const PURPLE = '#9B3AB1';
 
     const styleIconContent = {
         fontSize: 16,
@@ -156,9 +105,7 @@ function Pattern02({ sx, ...other }) {
                         <Icon
                             color={WHITE}
                             content={
-                                <>
-                                    <Typography sx={{ ...styleIconContent }}>68%</Typography>
-                                </>
+                                <Typography sx={{ ...styleIconContent }}>68%</Typography>
                             }
                         />
                     </m.div>
@@ -176,9 +123,7 @@ function Pattern02({ sx, ...other }) {
                         <Icon
                             color={WHITE}
                             content={
-                                <>
-                                    <Typography sx={{ ...styleIconContent }}>64%</Typography>
-                                </>
+                                <Typography sx={{ ...styleIconContent }}>64%</Typography>
                             }
                         />
                     </m.div>
@@ -197,9 +142,7 @@ function Pattern02({ sx, ...other }) {
                         <Icon
                             color={WHITE}
                             content={
-                                <>
-                                    <Typography sx={{ ...styleIconContent }}>62%</Typography>
-                                </>
+                                <Typography sx={{ ...styleIconContent }}>62%</Typography>
                             }
                      
                         />
@@ -218,9 +161,7 @@ function Pattern02({ sx, ...other }) {
                         <Icon
                             color={WHITE}
                             content={
-                                <>
-                                    <Typography sx={{ ...styleIconContent }}>70%</Typography>
-                                </>
+                                <Typography sx={{ ...styleIconContent }}>70%</Typography>
                             }
                         />
                     </m.div>

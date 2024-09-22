@@ -1,8 +1,10 @@
+import PropTypes from 'prop-types';
+
 import NoSsr from '@mui/material/NoSsr';
 import { tabClasses } from '@mui/material/Tab';
 import { useTheme } from '@mui/material/styles';
 import Tabs, { tabsClasses } from '@mui/material/Tabs';
-import PropTypes from 'prop-types';
+
 import { stylesMode } from 'src/theme/styles';
 
 // ----------------------------------------------------------------------
@@ -50,11 +52,11 @@ export function CustomTabs({ children, slotProps, sx, ...other }) {
         },
         [`& .${tabClasses.root}`]: {
           py: 1,
-          px: 2,
+          px: 0,
           zIndex: 1,
           minHeight: 'auto',
           marginRight: 0, // Remove margin here
-          ...slotProps?.tab,
+          // ...slotProps?.tab,
           [`&.${tabClasses.selected}`]: {
             ...slotProps?.selected,
           },
@@ -82,7 +84,7 @@ CustomTabs.propTypes = {
     flexContainer: PropTypes.string,
     scrollButtons: PropTypes.string,
     indicator: PropTypes.string,
-    tab: PropTypes.string,
+    // tab: PropTypes.string,
     selected: PropTypes.string,
   }),
   sx: PropTypes.object,

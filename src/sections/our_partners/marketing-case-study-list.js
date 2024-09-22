@@ -1,23 +1,19 @@
-import PropTypes, { object } from 'prop-types';
 import { useState, useCallback } from 'react';
 
 import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Tabs from '@mui/material/Tabs';
+import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import Paper from '@mui/material/Paper';
-import TabContext from '@mui/lab/TabContext';
-import Link from '@mui/material/Link';
-import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import Pagination, { paginationClasses } from '@mui/material/Pagination';
-import Image from 'src/components/image';
-import Grid from '@mui/material/Unstable_Grid2';
+import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
+import TabContext from '@mui/lab/TabContext';
+import Grid from '@mui/material/Unstable_Grid2';
 import Typography from '@mui/material/Typography';
 
-import MarketingCaseStudyItem from './marketing-case-study-item';
+import Image from 'src/components/image';
 
 // ----------------------------------------------------------------------
 
@@ -355,26 +351,26 @@ export default function MarketingCaseStudyList() {
                                         They support businesses in three key ways:
                                     </Typography>
 
-                                    <>
-                                        <ul style={{ color: "#637381", margin: 0 }}>
-                                            <li>
-                                                <Link href='https://www.cfib-fcei.ca/en/site/advocacy'>
-                                                    {` Advocacy `}
-                                                </Link>
-                                                — CFIB fights for policy change that benefits your business.
-                                            </li>
-                                            <li>
-                                                <Link href='https://www.cfib-fcei.ca/en/tools-resources'>
-                                                    {` Resources `}
-                                                </Link>
-                                                — a team of advisors is available weekdays for 1-on-1 consultations, offering the advice and resources your business needs to succeed.</li>
-                                            <li>
-                                                <Link href='https://www.cfib-fcei.ca/en/member-savings'>
-                                                    {` Savings `}
-                                                </Link>
-                                                — CFIB negotiated great rates through the strength of our members, and give you access to exclusive discounts on key services to run your business.</li>
-                                        </ul>
-                                    </>
+                                  
+                                    <ul style={{ color: "#637381", margin: 0 }}>
+                                        <li>
+                                            <Link href='https://www.cfib-fcei.ca/en/site/advocacy'>
+                                                {` Advocacy `}
+                                            </Link>
+                                            — CFIB fights for policy change that benefits your business.
+                                        </li>
+                                        <li>
+                                            <Link href='https://www.cfib-fcei.ca/en/tools-resources'>
+                                                {` Resources `}
+                                            </Link>
+                                            — a team of advisors is available weekdays for 1-on-1 consultations, offering the advice and resources your business needs to succeed.</li>
+                                        <li>
+                                            <Link href='https://www.cfib-fcei.ca/en/member-savings'>
+                                                {` Savings `}
+                                            </Link>
+                                            — CFIB negotiated great rates through the strength of our members, and give you access to exclusive discounts on key services to run your business.</li>
+                                    </ul>
+                                    
 
                                     <Typography sx={{ color: 'text.secondary' }}>
                                         Take advantage of the

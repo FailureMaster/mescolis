@@ -1,69 +1,34 @@
 import PropTypes from 'prop-types';
 
 import Link from '@mui/material/Link';
-import Masonry from '@mui/lab/Masonry';
 import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 import Collapse from '@mui/material/Collapse';
 import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Unstable_Grid2';
 import Container from '@mui/material/Container';
+import Grid from '@mui/material/Unstable_Grid2';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { alpha, styled } from '@mui/material/styles';
 import InputAdornment from '@mui/material/InputAdornment';
-import Button, { buttonClasses } from '@mui/material/Button';
 
 import { usePathname } from 'src/routes/hooks';
 import { RouterLink } from 'src/routes/components';
 
 import { useBoolean } from 'src/hooks/use-boolean';
-import { useResponsive } from 'src/hooks/use-responsive';
 
 import { _socials } from 'src/_mock';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 
-import { pageLinks, navConfig } from './config-navigation';
-
 // ----------------------------------------------------------------------
-
-const StyledAppStoreButton = styled(Button)(({ theme }) => ({
-    flexShrink: 0,
-    padding: '5px 12px',
-    color: theme.palette.common.white,
-    border: `solid 1px ${alpha(theme.palette.common.black, 0.24)}`,
-    background: `linear-gradient(180deg, ${theme.palette.grey[900]} 0%, ${theme.palette.common.black} 100%)`,
-    [`& .${buttonClasses.startIcon}`]: {
-        marginLeft: 0,
-    },
-}));
 
 // ----------------------------------------------------------------------
 
 export default function Footer() {
-    const mdUp = useResponsive('up', 'md');
-
-    const pathname = usePathname();
-
-    const mobileList = navConfig.find((i) => i.title === 'Pages')?.children || [];
-
-    const desktopList = pageLinks.sort((listA, listB) => Number(listA.order) - Number(listB.order));
-
-    const renderLists = mdUp ? desktopList : mobileList;
-
-    const isHome = pathname === '/';
-
-    const simpleFooter = (
-        <Container sx={{ py: 8, textAlign: 'center' }}>
-            <Logo single />
-
-            <Typography variant="caption" component="div" sx={{ color: 'text.secondary' }}>
-                © 2023. All rights reserved
-            </Typography>
-        </Container>
-    );
+    const { trans } = useTranslation(); // Access language here
 
     const mainFooter = (
         <>
@@ -82,21 +47,16 @@ export default function Footer() {
                                 <Logo />
 
                                 <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                    The all-in-one platform for shipping – MesColis allows you to ship packages, envelopes, and LTL (Freight) while generating the appropriate documentation for you.
+                                    {trans('footer_about')}
                                 </Typography>
                             </Stack>
 
-
-                            {/* <Stack spacing={2}>
-                                <Typography variant="h6">Apps</Typography>
-                                <AppStoreButton />
-                            </Stack> */}
                         </Stack>
                     </Grid>
 
                     <Grid xs={12} md={3}>
                         <Stack spacing={2}>
-                            <Typography variant="h6">Social</Typography>
+                            <Typography variant="h6">{trans('footer_social_title')}</Typography>
                             <Stack direction="row" alignItems="center">
                                 {_socials.map((social) => (
                                     <IconButton key={social.value} color="primary">
@@ -109,26 +69,26 @@ export default function Footer() {
 
                     <Grid xs={12} md={3}>
                         <Stack spacing={1} alignItems="flex-start">
-                            <Typography variant="h6">Quick Links</Typography>
+                            <Typography variant="h6">{trans('footer_quick_links_title')}</Typography>
 
                             <Link href="/" variant="body2" sx={{ color: 'text.primary' }}>
-                                Home
+                                {trans('footer_quick_links_1')}
                             </Link>
 
                             <Link href="/how-it-works" variant="body2" sx={{ color: 'text.primary' }}>
-                                How it Works
+                               {trans('footer_quick_links_2')}
                             </Link>
 
                             <Link href="/our-mission" variant="body2" sx={{ color: 'text.primary' }}>
-                                Our Mission
+                                {trans('footer_quick_links_3')}
                             </Link>
 
                             <Link href="/couriers" variant="body2" sx={{ color: 'text.primary' }}>
-                                Couriers
+                                {trans('footer_quick_links_4')}
                             </Link>
 
                             <Link href='/faq' variant="body2" sx={{ color: 'text.primary' }}>
-                                FAQ
+                                {trans('footer_quick_links_5')}
                             </Link>
                         </Stack>
                     </Grid>
@@ -136,21 +96,21 @@ export default function Footer() {
                     <Grid xs={12} md={3}>
                         <Stack spacing={2}>
                             <Stack spacing={1}>
-                                <Typography variant="h6">Let’s stay in touch</Typography>
+                                <Typography variant="h6">{trans('footer_newsletter_title')}</Typography>
                                 <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                                    Subscribe to our newsletter to receive latest articles to your inbox weekly.
+                                    {trans('footer_newsletter_description')}
                                 </Typography>
                             </Stack>
 
                             <TextField
                                 fullWidth
                                 hiddenLabel
-                                placeholder="Email address"
+                                placeholder={trans('footer_button_placeholder')}
                                 InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end">
                                             <Button variant="contained" color="inherit" size="large" sx={{ mr: -1.25 }}>
-                                                Subscribe
+                                                {trans('footer_button')}
                                             </Button>
                                         </InputAdornment>
                                     ),
@@ -167,14 +127,14 @@ export default function Footer() {
                 <Stack
                     spacing={2.5}
                     direction={{ xs: 'column', md: 'row' }}
-                    justifyContent="space-between"
+                    justifyContent="center"
                     sx={{ py: 3, textAlign: 'center' }}
                 >
                     <Typography variant="caption" sx={{ color: 'text.secondary' }}>
-                        MesColis © 2024. All rights reserved
+                        MesColis © 2024. {trans('footer_all_rights_reserved')}
                     </Typography>
 
-                    <Stack direction="row" spacing={3} justifyContent="center">
+                    {/* <Stack direction="row" spacing={3} justifyContent="center">
                         <Link variant="caption" sx={{ color: 'text.secondary' }}>
                             Help Center
                         </Link>
@@ -182,7 +142,7 @@ export default function Footer() {
                         <Link variant="caption" sx={{ color: 'text.secondary' }}>
                             Terms of Service
                         </Link>
-                    </Stack>
+                    </Stack> */}
                 </Stack>
             </Container>
         </>
@@ -296,34 +256,3 @@ ListMobile.propTypes = {
     }),
 };
 
-// ----------------------------------------------------------------------
-
-function AppStoreButton({ ...other }) {
-    return (
-        <Stack direction="row" flexWrap="wrap" spacing={2} {...other}>
-            <StyledAppStoreButton startIcon={<Iconify icon="ri:apple-fill" width={28} />}>
-                <Stack alignItems="flex-start">
-                    <Typography variant="caption" sx={{ opacity: 0.72 }}>
-                        Download on the
-                    </Typography>
-
-                    <Typography variant="h6" sx={{ mt: -0.5 }}>
-                        Apple Store
-                    </Typography>
-                </Stack>
-            </StyledAppStoreButton>
-
-            <StyledAppStoreButton startIcon={<Iconify icon="logos:google-play-icon" width={28} />}>
-                <Stack alignItems="flex-start">
-                    <Typography variant="caption" sx={{ opacity: 0.72 }}>
-                        Download from
-                    </Typography>
-
-                    <Typography variant="h6" sx={{ mt: -0.5 }}>
-                        Google Play
-                    </Typography>
-                </Stack>
-            </StyledAppStoreButton>
-        </Stack>
-    );
-}

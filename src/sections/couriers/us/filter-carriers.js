@@ -1,32 +1,32 @@
-import { filledInputClasses } from '@mui/material/FilledInput';
-
-import { countries } from 'src/assets/data';
-
-import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
+import MenuItem from '@mui/material/MenuItem';
 
-import CountrySelect from 'src/components/country-select';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
-import FormProvider, { RHFSelect, RHFTextField } from 'src/components/hook-form';
+import { RHFSelect } from 'src/components/hook-form';
 
 // ----------------------------------------------------------------------
 
 export default function FilterLocation() {
+    const { trans } = useTranslation();
+
     return (
-        <RHFSelect name="carriers_name" label="Carriers">
-            <MenuItem value="All Carriers">All Carriers</MenuItem>
+        <RHFSelect name="carriers_name" label={trans('p_couriers_select_placeholder')}>
+            <MenuItem value="All Carriers">
+                {trans('p_couriers_select_option_1')}
+            </MenuItem>
             <Divider sx={{ borderStyle: 'dashed' }} />
-            <MenuItem value=" LTL Freight">
-                LTL Freight
+            <MenuItem value="LTL Freight">
+                {trans('p_couriers_select_option_2')}
             </MenuItem>
             <MenuItem value="Canada">
-                Canada
+                {trans('p_couriers_select_option_3')}
             </MenuItem>
             <MenuItem value="United States">
-                United States
+                {trans('p_couriers_select_option_4')}
             </MenuItem>
-            <MenuItem value=" Rest of the world">
-                Rest of the world
+            <MenuItem value="Rest of the world">
+                {trans('p_couriers_select_option_5')}
             </MenuItem>
         </RHFSelect>
     );

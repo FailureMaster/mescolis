@@ -1,25 +1,23 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import List from '@mui/material/List';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 
-import { paths } from 'src/routes/paths';
 import { usePathname } from 'src/routes/hooks';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import { useTranslation } from 'src/contexts/TranslationContext';
+
 import Logo from 'src/components/logo';
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
-
 import { NavBasicMobile } from 'src/components/nav-basic';
-import NavList from './nav-list';
-import { NAV } from '../../../config-layout';
 
+import { NAV } from '../../../config-layout';
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +25,8 @@ export default function NavMobile({ data }) {
     const pathname = usePathname();
 
     const mobileOpen = useBoolean();
+
+    const { trans } = useTranslation();
 
     useEffect(() => {
         if (mobileOpen.value) {
@@ -63,7 +63,7 @@ export default function NavMobile({ data }) {
                             variant="outlined"
                             rel="noopener"
                         >
-                            Sign in
+                            {trans('sign_in')}
                         </Button>
 
                         <Button
@@ -73,7 +73,7 @@ export default function NavMobile({ data }) {
                             href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
                             rel="noopener"
                         >
-                            Sign Out
+                            {trans('sign_up')}
                         </Button>
 
 

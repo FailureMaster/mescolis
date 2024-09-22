@@ -8,9 +8,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
-import Carousel, { useCarousel, CarouselArrows } from 'src/components/carousel';
+import { useCarousel } from 'src/components/carousel';
 
-import { TestimonialItemContent, TestimonialItemThumbnail } from './testimonial-item';
 import ElearningTeamItem from './elearning-team-item';
 
 // ----------------------------------------------------------------------

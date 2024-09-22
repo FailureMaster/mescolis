@@ -19,38 +19,6 @@ const StyledContent = styled('div')(({ theme }) => ({
   boxShadow: `inset 0px -4px 6px rgba(0, 0, 0, 0.48)`,
 }));
 
-const StyledShape01 = styled('div')(() => ({
-  top: -2,
-  left: -2,
-  width: 16,
-  zIndex: 9,
-  height: 16,
-  borderRadius: '5px',
-  position: 'absolute',
-  '&:before': {
-    top: 0,
-    left: 0,
-    width: 16,
-    height: 16,
-    content: '" "',
-    borderRadius: '5px',
-    position: 'absolute',
-    backgroundColor: 'rgba(255,255,255,0.4)',
-  },
-}));
-
-const StyledShape02 = styled('div')(({ theme }) => ({
-  top: 2,
-  left: -10,
-  width: 18,
-  zIndex: 8,
-  height: 18,
-  opacity: 0.24,
-  position: 'absolute',
-  transform: 'rotate(45deg)',
-  backgroundColor: theme.palette.common.black,
-}));
-
 // ----------------------------------------------------------------------
 
 function Icon({ content, color, sx, ...other }) {

@@ -1,23 +1,12 @@
 import * as Yup from 'yup';
+import { useForm } from 'react-hook-form';
 import { useState, useCallback } from 'react';
-
-import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import LoadingButton from '@mui/lab/LoadingButton';
-import FormHelperText from '@mui/material/FormHelperText';
-import ToggleButton, { toggleButtonClasses } from '@mui/material/ToggleButton';
-import { filledInputClasses } from '@mui/material/FilledInput';
 
-import { fCurrency } from 'src/utils/format-number';
+import FormProvider, { RHFTextField } from 'src/components/hook-form';
 
-import { _tags } from 'src/_mock';
-
-import FormProvider, { RHFSlider, RHFTextField } from 'src/components/hook-form';
-
-import FilterKeyword from './filters/filter-keyword';
 import FilterOrigin from './filters/filter-origin';
 import FilterDestination from './filters/filter-destination';
 
@@ -49,16 +38,6 @@ export default function MarketingContactForm() {
         filterLocation2: null,
     });
 
-    const handleChangeKeyword = useCallback(
-        (newValue) => {
-            setFilters({
-                ...filters,
-                filterKeyword: newValue,
-            });
-        },
-        [filters]
-    );
-
     const handleChangeLocation = useCallback(
         (newValue) => {
             setFilters({
@@ -86,9 +65,7 @@ export default function MarketingContactForm() {
 
     const {
         reset,
-        control,
         handleSubmit,
-        formState: { isSubmitting },
     } = methods;
 
     const onSubmit = handleSubmit(async (data) => {
@@ -100,11 +77,6 @@ export default function MarketingContactForm() {
             console.error(error);
         }
     });
-
-    const getSelected = (selectedItems, item) =>
-        selectedItems.includes(item)
-            ? selectedItems.filter((value) => value !== item)
-            : [...selectedItems, item];
 
     return (
         <FormProvider methods={methods} onSubmit={onSubmit}>

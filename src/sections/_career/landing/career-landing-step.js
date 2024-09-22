@@ -1,35 +1,37 @@
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
-import Iconify from 'src/components/iconify';
-import SvgColor from 'src/components/svg-color';
+import { textGradient } from 'src/theme/styles';
+import { useTranslation } from 'src/contexts/TranslationContext';
+
 import Image from 'src/components/image';
 
 // ----------------------------------------------------------------------
 
-const STEPS = [
-    {
-        title: 'Shipping Packages',
-        description: 'Ship envelopes, packs, or packages using top-rated carrier services, including options for ground, second-day, and next-day delivery.',
-        icon: '/assets/home/shipping_package.svg',
-    },
-    {
-        title: 'LTL Freight',
-        description: 'Provides Less-Than-Truckload (LTL) Freight for larger items on pallets, letting you compare and select from trusted North American freight carriers.',
-        icon: '/assets/home/ltl_freight.svg',
-    },
-    {
-        title: 'International Shipping',
-        description: 'Ship domestically, to the United States, or globally with services to over 220 countries and territories using your preferred carriers.',
-        icon: '/assets/home/international_shipping_package.svg',
-    },
-];
-
-// ----------------------------------------------------------------------
-
 export default function CareerLandingStep() {
+    const { trans } = useTranslation();
+
+    const STEPS = [
+        {
+            title: trans('home_about_services_title_1'),
+            description: trans('home_about_services_description_1'),
+            icon: '/assets/home/shipping_package.svg',
+        },
+        {
+            title: trans('home_about_services_title_2'),
+            description: trans('home_about_services_description_2'),
+            icon: '/assets/home/ltl_freight.svg',
+        },
+        {
+            title: trans('home_about_services_title_3'),
+            description: trans('home_about_services_description_3'),
+            icon: '/assets/home/international_shipping_package.svg',
+        },
+    ];
+
+    // ----------------------------------------------------------------------
+
     return (
         <Box
             sx={{
@@ -40,20 +42,26 @@ export default function CareerLandingStep() {
         >
             <Container>
                 <Typography variant="overline" sx={{ color: 'text.disabled' }}>
-                    No. 1 Shipping Company in The World
+                   {trans('home_about_subtitle')}
                 </Typography>
 
                 <Typography variant="h2" sx={{ my: 3 }}>
-                    How Can
-                    <Box component="span" sx={{ color: 'primary.main' }}>
-                        {` MesColis `}
+                    {trans('home_about_title_1')}
+                    <Box
+                        component="span"
+                        sx={{
+                            ...textGradient(
+                                `90deg, #078DEE 20%, #FFA03F 100%`
+                            ),
+                        }}
+                    >
+                        MesColis
                     </Box>
-                    Help Me?
+                    {trans('home_about_title_2')}
                 </Typography>
 
                 <Typography sx={{ color: 'text.secondary', maxWidth: 550, mx: 'auto' }}>
-                    MesColis user-friendly tools make it easy to process and manage shipments, leaving you free to take care of your business.
-                    Get rates, print labels, ship, track and manage shipments, all in one place.
+                    {trans('home_about_description')}
                 </Typography>
 
                 <Box
@@ -78,7 +86,6 @@ export default function CareerLandingStep() {
                                     color: 'primary.main',
                                 }}
                             />
-
 
                             <Typography variant="h5" sx={{ mt: 2, mb: 1 }}>
                                 {value.title}

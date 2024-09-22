@@ -10,7 +10,8 @@ import AccordionSummary, { accordionSummaryClasses } from '@mui/material/Accordi
 
 import { useResponsive } from 'src/hooks/use-responsive';
 
-import { _faqs } from 'src/_mock';
+import { _mock } from 'src/_mock';
+import { useTranslation } from 'src/contexts/TranslationContext';
 
 import Image from 'src/components/image';
 import Iconify from 'src/components/iconify';
@@ -18,6 +19,8 @@ import Iconify from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
 export default function MarketingLandingFaqs() {
+    const { trans } = useTranslation();
+
     const mdUp = useResponsive('up', 'md');
 
     const [expanded, setExpanded] = useState(false);
@@ -28,6 +31,24 @@ export default function MarketingLandingFaqs() {
         },
         []
     );
+
+    const _faqs = [
+        trans('p_faq_content_question_1'),
+        trans('p_faq_content_question_2'),
+        trans('p_faq_content_question_3'),
+        trans('p_faq_content_question_4'),
+        trans('p_faq_content_question_5'),
+    ].map((question, index) => ({
+        id: _mock.id(index),
+        question,
+        answer: [
+            trans('p_faq_content_answer_1'),
+            trans('p_faq_content_answer_2'),
+            trans('p_faq_content_answer_3'),
+            trans('p_faq_content_answer_4'),
+            trans('p_faq_content_answer_5'),
+        ][index],
+    }));
 
     return (
         <Container
@@ -40,10 +61,12 @@ export default function MarketingLandingFaqs() {
                 <Grid xs={12} md={6} lg={6}>
                     <Stack spacing={2} sx={{ mb: 5, textAlign: { xs: 'center', md: 'left' } }}>
                         <Typography variant="overline" color="text.disabled">
-                            FAQS
+                            {trans('p_faq_content_subtitle')}
                         </Typography>
 
-                        <Typography variant="h2">Frequently Asked Questions</Typography>
+                        <Typography variant="h2">
+                            {trans('p_faq_content_title')}
+                        </Typography>
                     </Stack>
 
                     {_faqs.map((faq) => (

@@ -1,25 +1,16 @@
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import { useState, useCallback } from 'react';
-
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import Divider from '@mui/material/Divider';
 
 import Iconify from 'src/components/iconify';
+import FormProvider from 'src/components/hook-form';
 
-import FormProvider, { RHFSlider, RHFTextField } from 'src/components/hook-form';
-
-import FilterTime from './filter-time';
-import FilterGuests from './filter-guests';
-import FilterLocation from './filter-location';
 import FilterCouriers from './filter-couriers';
 import FilterCarriers from './filter-carriers';
-
-
 
 // ----------------------------------------------------------------------
 
@@ -43,39 +34,6 @@ export default function TravelFilters({ sx, ...other }) {
         message: '',
     };
 
-    const [departureDay, setDepartureDay] = useState(null);
-
-    const [guests, setGuests] = useState({
-        adults: 0,
-        children: 0,
-    });
-
-    const handleChangeDepartureDay = useCallback((newValue) => {
-        setDepartureDay(newValue);
-    }, []);
-
-    const handleIncrementGuests = useCallback(
-        (guest) => {
-            if (guest === 'children') {
-                setGuests({ ...guests, children: guests.children + 1 });
-            } else {
-                setGuests({ ...guests, adults: guests.adults + 1 });
-            }
-        },
-        [guests]
-    );
-
-    const handleDecreaseGuests = useCallback(
-        (guest) => {
-            if (guest === 'children') {
-                setGuests({ ...guests, children: guests.children - 1 });
-            } else {
-                setGuests({ ...guests, adults: guests.adults - 1 });
-            }
-        },
-        [guests]
-    );
-
     const methods = useForm({
         resolver: yupResolver(MarketingContactSchema),
         defaultValues,
@@ -83,11 +41,8 @@ export default function TravelFilters({ sx, ...other }) {
 
     const {
         reset,
-        control,
         handleSubmit,
-        formState: { isSubmitting },
     } = methods;
-
 
     const onSubmit = handleSubmit(async (data) => {
         try {

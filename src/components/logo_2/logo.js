@@ -1,26 +1,31 @@
-import { memo } from 'react';
 import PropTypes from 'prop-types';
+import { memo, useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import { useTheme } from '@mui/material/styles';
 
 import { RouterLink } from 'src/routes/components';
 
 // ----------------------------------------------------------------------
 
 function Logo({ single = false, isScrolled = false, sx }) {
-  const theme = useTheme();
+  const [isHomePage, setIsHomePage] = useState(false);
 
-  const PRIMARY_MAIN = theme.palette.primary.main;
+  useEffect(() => {
+    // Check if current page is the homepage
+    if (typeof window !== 'undefined') {
+      setIsHomePage(window.location.pathname === '/');
+    }
+  }, []);
 
-  const logoSrc = isScrolled
-    ? '/assets/logo/mescolis_black_logo.png'
-    : '/assets/logo/mescolis_white_logo.png';
+  // Conditionally set logo based on whether on the homepage or not
+  const logoSrc = isHomePage && !isScrolled
+    ? '/assets/logo/mescolis_title_only_white.png'
+    : '/assets/logo/mescolis_title_only_black.png';
 
-  const singleLogoSrc = isScrolled
-    ? '/assets/logo/mescolis_black_logo_single.png'
-    : '/assets/logo/mescolis_white_logo_single.png';
+  const singleLogoSrc = isHomePage && !isScrolled
+    ? '/assets/logo/mescolis_white_logo_single.png'
+    : '/assets/logo/mescolis_black_logo_single.png';
 
   const singleLogo = (
     <Box
@@ -28,7 +33,6 @@ function Logo({ single = false, isScrolled = false, sx }) {
       src={single ? singleLogoSrc : logoSrc}
       sx={{
         width: 80,
-        // height: 40,
         cursor: 'pointer',
         ...sx,
       }}
@@ -41,7 +45,6 @@ function Logo({ single = false, isScrolled = false, sx }) {
       src={single ? singleLogoSrc : logoSrc}
       sx={{
         width: '180px!important',
-        // height: 65,
         cursor: 'pointer',
         ...sx,
       }}
@@ -58,7 +61,6 @@ function Logo({ single = false, isScrolled = false, sx }) {
     >
       <Box
         sx={{
-          // width: single ? 64 : 75,
           lineHeight: 0,
           cursor: 'pointer',
           display: 'inline-flex',
