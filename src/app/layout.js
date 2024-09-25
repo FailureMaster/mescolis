@@ -5,9 +5,14 @@ import 'src/global.css';
 
 import PropTypes from 'prop-types';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import ThemeProvider from 'src/theme';
+import { textGradient } from 'src/theme/styles';
 import { primaryFont } from 'src/theme/typography';
 import { LocalizationProvider } from 'src/locales';
+
 
 import ProgressBar from 'src/components/progress-bar';
 import { MotionLazy } from 'src/components/animate/motion-lazy';
@@ -39,24 +44,40 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={primaryFont.className}>
-      <body>
-        <LocalizationProvider>
-          <SettingsProvider
-            defaultSettings={{
-              themeMode: 'light', // 'light' | 'dark'
-              themeDirection: 'ltr', //  'rtl' | 'ltr'
-              themeColorPresets: 'default', // 'default' | 'preset01' | 'preset02' | 'preset03' | 'preset04' | 'preset05'
-            }}
-          >
-            <ThemeProvider>
-              <MotionLazy>
-                <ProgressBar />
-                <SettingsDrawer />
-                {children}
-              </MotionLazy>
-            </ThemeProvider>
-          </SettingsProvider>
-        </LocalizationProvider>
+      <body style={{ position: "relative", height: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <Typography variant="h1" 
+          sx={{ 
+            position: 'absolute', 
+            zIndex: 1,
+            ...textGradient(
+              `90deg, #078DEE 20%, #FFFFFF 100%`
+            ),
+            textTransform: "uppercase",
+            fontWeight: "bold",
+            fontSize: "5rem",
+            textAlign: "center",
+          }}>
+            COMING SOON
+        </Typography>
+        <div style={{ filter: "blur(6px)", height: "100%",  width: "100%", overflow: "hidden", pointerEvents: "none"}}>
+          <LocalizationProvider>
+            <SettingsProvider
+              defaultSettings={{
+                themeMode: 'light', // 'light' | 'dark'
+                themeDirection: 'ltr', //  'rtl' | 'ltr'
+                themeColorPresets: 'default', // 'default' | 'preset01' | 'preset02' | 'preset03' | 'preset04' | 'preset05'
+              }}
+            >
+              <ThemeProvider>
+                <MotionLazy>
+                  <ProgressBar />
+                  <SettingsDrawer />
+                  {children}
+                </MotionLazy>
+              </ThemeProvider>
+            </SettingsProvider>
+          </LocalizationProvider>
+        </div>
       </body>
     </html>
   );
