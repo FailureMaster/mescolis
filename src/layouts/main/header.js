@@ -56,38 +56,7 @@ export default function Header({ headerOnDark }) {
                                 '& .icon': { display: 'none' },
                             },
                         }}
-                        data={[
-                            { title:  trans('home'), path: '/' },
-                            {
-                                title: trans('how_it_works'),
-                                icon: <Iconify icon="solar:home-2-bold-duotone" />,
-                                path: '/how-it-works',
-                            },
-                            { title: trans('our_mission'), path: '/our-mission' },
-                            // { title: 'Our Partners', path: '/our-partners' },
-                            {
-                                title: trans('couriers'),
-                                path: '/couriers',
-                                icon: <Iconify icon="solar:file-bold-duotone" />,
-                                children: [
-                                    { title: 'Canada', path: '/couriers/ca' },
-                                    { title: 'United States', path: '/couriers/us' },
-                                    { title: 'Rest of the World', path: '/couriers/rest-of-the-world' },
-                                ],
-                            },
-                            { title: trans('faq'), path: '/faq' },
-                            // {
-                            //     title: 'Resources',
-                            //     path: '#',
-                            //     icon: <Iconify icon="solar:file-bold-duotone" />,
-                            //     children: [
-                            //         { title: 'Support', path: '#' },
-                            //         { title: 'Developers', path: '#' },
-                            //         { title: 'Blog', path: '#' },
-                            //     ],
-                            // },
-
-                        ]}
+                        data={[]}
                     />
                 </Stack>
 
@@ -98,28 +67,6 @@ export default function Header({ headerOnDark }) {
 
                 <LanguagePopover data={langs} currentlanguage={language} onSelectLanguage={changeLanguage} />
 
-                <Button
-                    href='https://mesdash.wise-choice.net/'
-                    variant="outlined"
-                    rel="noopener"
-                    sx={{
-                        display: { xs: 'none', md: 'inline-flex' },
-                    }}
-                >
-                    {trans('sign_in')}
-                </Button>
-
-                <Button
-                    variant="contained"
-                    color="inherit"
-                    href='https://mesdash.wise-choice.net/auth/jwt/sign-up/'
-                    rel="noopener"
-                    sx={{
-                        display: { xs: 'none', md: 'inline-flex' },
-                    }}
-                >
-                    {trans('sign_up')}
-                </Button>
             </Stack>
 
             {!mdUp &&

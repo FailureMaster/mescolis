@@ -42,8 +42,8 @@ export default function MainLayout({
                     {children}
                 </Box>
 
-                <FooterInfo />
-                <Footer />
+                {/* <FooterInfo />
+                <Footer /> */}
             </Box>
         </TranslationProvider>
     );

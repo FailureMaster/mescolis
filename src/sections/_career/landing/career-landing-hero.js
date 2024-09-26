@@ -90,6 +90,8 @@ export default function CareerLandingHero() {
                 pb: { xs: 10, md: 15 },
                 display: { md: 'flex' },
                 minHeight: { md: '100vh' },
+                filter: "blur(5px)",
+                pointerEvents: "none",
             }}
         >
             <Container>
@@ -99,6 +101,7 @@ export default function CareerLandingHero() {
                             spacing={5}
                             sx={{
                                 textAlign: { xs: 'center', md: 'unset' },
+   
                             }}
                         >
                             <Stack sx={{}}>
@@ -114,7 +117,7 @@ export default function CareerLandingHero() {
                                         MesColis
                                     </Box>
                                 </Typography>
-                                <Typography variant="h3" sx={{ color: 'common.white' }}>
+                                <Typography variant="h3" sx={{ color: 'common.white', width: "400px",margin: {xs: "auto", md: 0} }}>
                                     {trans('home_hero_subtitle')}
                                 </Typography>
                                 <Typography variant="h4" sx={{ color: 'lightgray' }}>

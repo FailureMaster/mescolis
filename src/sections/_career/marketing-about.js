@@ -102,7 +102,7 @@ export default function MarketingAbout() {
                         ))}
                     </Stack>
 
-                    <Button
+                    {/* <Button
                         variant="outlined"
                         color="inherit"
                         size="large"
@@ -111,7 +111,7 @@ export default function MarketingAbout() {
                         onClick={handleClickOpen}
                     >
                         {trans('home_info_button')}
-                    </Button>
+                    </Button> */}
                 </Grid>
             </Grid>
 

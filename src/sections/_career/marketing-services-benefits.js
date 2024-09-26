@@ -406,19 +406,7 @@ export default function MarketingServicesBenefits() {
                     </Grid>
 
                 </Grid>}
-
-
-                <Stack alignItems="center">
-                    <Button
-                        color="inherit"
-                        size="large"
-                        variant="outlined"
-                        sx={{ mt: 5 }}
-                        onClick={handleClickOpen}
-                    >
-                        {trans('home_benefits_button')}
-                    </Button>
-                </Stack>
+                
             </Container>
 
             {/* Modal Implementation */}

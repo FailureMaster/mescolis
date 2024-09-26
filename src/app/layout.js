@@ -5,9 +5,14 @@ import 'src/global.css';
 
 import PropTypes from 'prop-types';
 
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 import ThemeProvider from 'src/theme';
+import { textGradient } from 'src/theme/styles';
 import { primaryFont } from 'src/theme/typography';
 import { LocalizationProvider } from 'src/locales';
+
 
 import ProgressBar from 'src/components/progress-bar';
 import { MotionLazy } from 'src/components/animate/motion-lazy';
