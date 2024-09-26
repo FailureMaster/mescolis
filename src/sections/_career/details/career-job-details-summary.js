@@ -7,7 +7,6 @@ import Typography from '@mui/material/Typography';
 
 import ContactMap from 'src/components/map';
 import Iconify from 'src/components/iconify';
-import Markdown from 'src/components/markdown';
 
 // ----------------------------------------------------------------------
 
@@ -16,7 +15,6 @@ export default function CareerJobDetailsSummary({ job }) {
 
   return (
     <Stack spacing={5}>
-      <Markdown content={content} />
 
       <Stack spacing={3}>
         <Typography variant="h5">Job Skills</Typography>

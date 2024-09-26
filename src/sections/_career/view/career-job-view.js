@@ -18,7 +18,6 @@ import { _jobs, _mock, _socials } from 'src/_mock';
 import Iconify from 'src/components/iconify';
 import { SplashScreen } from 'src/components/loading-screen';
 
-import Advertisement from '../../advertisement';
 import CareerNewsletter from '../career-newsletter';
 import CareerJobListSimilar from '../list/career-job-list-similar';
 import CareerJobDetailsInfo from '../details/career-job-details-info';
@@ -109,14 +108,6 @@ export default function CareerJobView() {
 
               <CareerJobDetailsCompanySimilar jobs={_jobs.slice(-3)} />
 
-              <Advertisement
-                advertisement={{
-                  title: 'Advertisement',
-                  description: 'Duis leo. Donec orci lectus, aliquam ut, faucibus non',
-                  imageUrl: _mock.image.career(2),
-                  path: '',
-                }}
-              />
             </Stack>
           </Grid>
         </Grid>
